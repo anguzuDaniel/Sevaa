@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "805407953019",
+    "project_id": "sevaa-7c29c",
+    "storage_bucket": "sevaa-7c29c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805407953019:android:2b47261fd3a48d9f1352de",
+        "android_client_info": {
+          "package_name": "com.danotech.sevaa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805407953019-c240tntvssa7obor0s1ij75rg4o96lid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-YcCZE2d4RI_Dl37HrNR864RVlpAuVms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805407953019-c240tntvssa7obor0s1ij75rg4o96lid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

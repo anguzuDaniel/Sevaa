@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:background="@drawable/blurry_gradient_haikei"
+    tools:context="com.danotech.sevaa.UI.fragments.SubscriptionsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:padding="@dimen/page_padding"
+        android:background="@drawable/blurry_gradient_haikei">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Wallet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/page_heading_size"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/wallet_card_rounded_corners"
+            android:elevation="4dp"
+            app:cardBackgroundColor="#FFAEBC"
+            app:cardCornerRadius="@dimen/card_radius">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/sun_tornado_card"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="$ 4,500.00"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sub_heading_size"
+                            android:textStyle="bold|italic" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Total Balance"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Income"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="$300.00"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold|italic" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="Expense"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="$ 7,500.00"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold|italic" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2">
+
+                    <include layout="@layout/fragment_chart" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <!--        <GridLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="200dp"-->
+    <!--            android:alignmentMode="alignBounds"-->
+    <!--            android:columnCount="2"-->
+    <!--            android:columnOrderPreserved="false"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:rowCount="3"-->
+    <!--            android:useDefaultMargins="true"-->
+    <!--            android:layout_below="@+id/sub_heading"-->
+    <!--            android:layout_marginBottom="40dp">-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="0"-->
+    <!--                android:layout_column="1"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#D3D3D3"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/transportation"/>-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Transportation"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="1"-->
+    <!--                android:layout_column="0"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="@color/card_color">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="vertical"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:src="@drawable/baseline_credit_card_24" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Mobile Money" />-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="0"-->
+    <!--                android:layout_column="0"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#ECFDF1"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/rental"/>-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="@string/rent_housing"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="1"-->
+    <!--                android:layout_column="1"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#FBE7C6"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/water_wheel" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:text="Water"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="1"-->
+    <!--                android:layout_column="0"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#FFAEBC"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/food_bar" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:text="@string/food_drinks"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="2"-->
+    <!--                android:layout_column="0"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#B4F8C8"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/movie_projector"/>-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Entertianment"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_row="2"-->
+    <!--                android:layout_column="1"-->
+    <!--                android:layout_gravity="fill"-->
+    <!--                android:layout_columnWeight="1"-->
+    <!--                android:layout_rowWeight="1"-->
+    <!--                app:cardElevation="@dimen/card_shadow"-->
+    <!--                app:cardBackgroundColor="#A0E7E5"-->
+    <!--                app:cardCornerRadius="@dimen/card_radius">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:layout_gravity="center_vertical|center_horizontal">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="@dimen/card_image_size"-->
+    <!--                        android:layout_height="@dimen/card_image_size"-->
+    <!--                        android:src="@drawable/shopping_cart" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="@dimen/card_text_margin_top"-->
+    <!--                        android:text="Shopping"-->
+    <!--                        android:textColor="@color/black"/>-->
+    <!--                </LinearLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+    <!--        </GridLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:background="@drawable/rounded_border"
+        android:orientation="vertical"
+        android:padding="@dimen/page_padding">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="My Subscriptions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sub_heading_size"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="NetFlix"
+                    android:textColor="@color/black"
+                    android:textSize="23dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="$ 25/Month"
+                    android:textColor="@color/color_transaction_label"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

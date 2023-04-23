@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_primary">#63B457</color>
+    <color name="color_background">#EAEFF2</color>
+    <color name="nav_item_color">#C14E4E4E</color>
+    <color name="status_bar">#C14E4E4E</color>
+    <color name="nav_item_color_selected">#8CC152</color>
+    <color name="card_color">#F9FAF7</color>
+    <color name="color_label">#616161</color>
+    <color name="color_gray">#424141</color>
+    <color name="black_light">#424141</color>
+    <color name="color_transaction_figures">#63B457</color>
+    <color name="color_transaction_label">#D45B5B</color>
+</resources>

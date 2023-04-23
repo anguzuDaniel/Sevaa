@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/white" />
+
+    <!--    <corners android:radius="16dp"-->
+    <!--        android:topLeftCorner="@{ShapeAppearanceModel.builder().setAllCorners(ShapeAppearanceModel.BLOB_CORNER_FAMILY).build().getTopLeftCorner()}"-->
+    <!--        android:topRightCorner="@{ShapeAppearanceModel.builder().setAllCorners(ShapeAppearanceModel.BLOB_CORNER_FAMILY).build().getTopRightCorner()}"-->
+    <!--        android:bottomLeftCorner="@{ShapeAppearanceModel.builder().setAllCorners(ShapeAppearanceModel.BLOB_CORNER_FAMILY).build().getBottomLeftCorner()}"-->
+    <!--        android:bottomRightCorner="@{ShapeAppearanceModel.builder().setAllCorners(ShapeAppearanceModel.BLOB_CORNER_FAMILY).build().getBottomRightCorner()}"-->
+    <!--        />-->
+
+</shape>
