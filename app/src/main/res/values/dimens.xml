@@ -9,4 +9,5 @@
     <dimen name="card_text_margin_top">10dp</dimen>
     <dimen name="input_padding">10dp</dimen>
     <dimen name="transaction_label_size">18sp</dimen>
+    <dimen name="num_expense">17sp</dimen>
 </resources>
