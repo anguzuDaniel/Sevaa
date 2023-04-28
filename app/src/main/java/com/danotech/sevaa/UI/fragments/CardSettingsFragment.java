@@ -13,3 +13,4 @@ public class CardSettingsFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
     }
 }
+

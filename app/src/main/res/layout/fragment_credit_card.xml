@@ -3,32 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.danotech.sevaa.UI.fragments.CreditCardFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.danotech.sevaa.UI.fragments.CreditCardFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4"
-        android:padding="@dimen/page_padding">
+        android:padding="@dimen/page_padding"
+        android:weightSum="4">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Cards"
-            android:textSize="@dimen/page_heading_size"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/page_heading_size" />
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
             android:layout_gravity="right"
+            android:layout_weight="2"
             android:gravity="right">
 
             <Button
+                android:id="@+id/button_add_card"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/baseline_add_circle_outline_24"
@@ -39,8 +40,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1 physical, 0 Virtual"
-        android:paddingLeft="@dimen/page_padding"/>
+        android:paddingLeft="@dimen/page_padding"
+        android:text="1 physical, 0 Virtual" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,169 +54,23 @@
             android:layout_height="wrap_content"
             android:text="Physical Card"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
-
 
     <LinearLayout
+        android:id="@+id/card_setting_options"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/page_padding">
 
-        <include layout="@layout/fragment_settings" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Card Settings" />
+
+
 
     </LinearLayout>
-<!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:orientation="vertical"-->
-    <!--        android:padding="@dimen/page_padding"-->
-    <!--        tools:ignore="UselessParent">-->
-
-    <!--        <TextView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginTop="15dp"-->
-    <!--            android:layout_marginBottom="30dp"-->
-    <!--            android:text="@string/card_information"-->
-    <!--            android:textColor="@color/black"-->
-    <!--            android:textSize="@dimen/page_heading_size" />-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginBottom="10dp"-->
-    <!--                android:text="@string/add_card"-->
-    <!--                android:textColor="@color/black"-->
-    <!--                android:textSize="@dimen/sub_heading_size"-->
-    <!--                tools:ignore="TextSizeCheck" />-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginBottom="6dp"-->
-    <!--                android:text="Card Number"-->
-    <!--                android:textColor="@color/color_label" />-->
-
-    <!--            <com.google.android.material.textfield.TextInputEditText-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_marginBottom="15dp"-->
-    <!--                android:background="@drawable/rounded_border"-->
-    <!--                android:hint="Your name and Surname"-->
-    <!--                android:padding="@dimen/input_padding"-->
-    <!--                android:textColorHint="@color/black"-->
-    <!--                tools:ignore="TouchTargetSizeCheck" />-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginBottom="6dp"-->
-    <!--                android:text="Card Name"-->
-    <!--                android:textColor="@color/color_label" />-->
-
-    <!--            <com.google.android.material.textfield.TextInputEditText-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_marginBottom="15dp"-->
-    <!--                android:background="@drawable/rounded_border"-->
-    <!--                android:hint="**** **** **** ****"-->
-    <!--                android:padding="@dimen/input_padding"-->
-    <!--                android:textColorHint="@color/black"-->
-    <!--                tools:ignore="TouchTargetSizeCheck" />-->
-
-
-    <!--            <LinearLayout-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:baselineAligned="false"-->
-    <!--                android:orientation="horizontal"-->
-    <!--                android:weightSum="2">-->
-
-    <!--                <LinearLayout-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="match_parent"-->
-    <!--                    android:layout_marginEnd="2dp"-->
-    <!--                    android:layout_weight="1"-->
-    <!--                    android:orientation="vertical">-->
-
-    <!--                    <TextView-->
-    <!--                        android:layout_width="match_parent"-->
-    <!--                        android:layout_height="wrap_content"-->
-    <!--                        android:layout_marginBottom="6dp"-->
-    <!--                        android:text="Valid until"-->
-    <!--                        android:textColor="@color/color_label" />-->
-
-    <!--                    <com.google.android.material.textfield.TextInputEditText-->
-    <!--                        android:layout_width="match_parent"-->
-    <!--                        android:layout_height="match_parent"-->
-    <!--                        android:hint="Month/Year"-->
-    <!--                        android:padding="@dimen/input_padding"-->
-    <!--                        android:textColorHint="@color/black"-->
-    <!--                        tools:ignore="TouchTargetSizeCheck"-->
-    <!--                        android:background="@drawable/rounded_border"/>-->
-
-    <!--                </LinearLayout>-->
-
-    <!--                <LinearLayout-->
-    <!--                    android:layout_width="match_parent"-->
-    <!--                    android:layout_height="match_parent"-->
-    <!--                    android:layout_marginStart="2dp"-->
-    <!--                    android:layout_weight="1"-->
-    <!--                    android:orientation="vertical">-->
-
-    <!--                    <TextView-->
-    <!--                        android:layout_width="match_parent"-->
-    <!--                        android:layout_height="wrap_content"-->
-    <!--                        android:layout_marginBottom="6dp"-->
-    <!--                        android:text="CVV"-->
-    <!--                        android:textColor="@color/color_label" />-->
-
-    <!--                    <com.google.android.material.textfield.TextInputEditText-->
-    <!--                        android:layout_width="match_parent"-->
-    <!--                        android:layout_height="match_parent"-->
-    <!--                        android:hint="***"-->
-    <!--                        android:textColorHint="@color/black"-->
-    <!--                        tools:ignore="TouchTargetSizeCheck"-->
-    <!--                        android:background="@drawable/rounded_border"-->
-    <!--                        android:padding="@dimen/input_padding"/>-->
-    <!--                </LinearLayout>-->
-    <!--            </LinearLayout>-->
-
-    <!--            <com.google.android.material.button.MaterialButton-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                android:backgroundTint="@color/color_primary"-->
-    <!--                android:text="add card" />-->
-
-    <!--        </LinearLayout>-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginTop="30dp"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginBottom="10dp"-->
-    <!--                android:text="Your Cards"-->
-    <!--                android:textColor="@color/black"-->
-    <!--                android:textSize="@dimen/sub_heading_size" />-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:text="You haven't any cards yet.." />-->
-    <!--        </LinearLayout>-->
-    <!--    </LinearLayout>-->
-
-
 </LinearLayout>

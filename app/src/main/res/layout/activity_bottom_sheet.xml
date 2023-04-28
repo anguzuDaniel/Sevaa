@@ -1,26 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="@dimen/page_padding"
     tools:context="com.danotech.sevaa.UI.BottomSheetActivity"
-    android:orientation="vertical">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/bottom_sheet_wrapper"
+    tools:ignore="ExtraText">
+z
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_border"
+        android:paddingTop="25dp">
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_sheet_app_bar"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom">
+            android:text="Add card"
+            android:textSize="@dimen/sub_heading_size"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"/>
 
+        <EditText
+            android:id="@+id/edit_text_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="Card Number"
+            android:inputType="number"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:singleLine="true" />
 
-        </com.google.android.material.bottomappbar.BottomAppBar>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <EditText
+                android:id="@+id/edit_text_expiration_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints=""
+                android:hint="Expiration Date (MM/YY)"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                tools:ignore="TouchTargetSizeCheck" />
 
+            <EditText
+                android:id="@+id/edit_text_cvv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:hint="CVV"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/color_primary"
+            android:backgroundTint="@color/color_primary"
+            android:text="Submit"
+            android:textColor="#4A148C" />
+    </LinearLayout>
 </LinearLayout>

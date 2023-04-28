@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppBar"
         tools:targetApi="33">
         <activity
+            android:name=".UI.fragments.CardSettingsActivity"
+            android:label="Card Settings" />
+        <activity
             android:name="com.danotech.sevaa.UI.BottomSheetActivity"
             android:exported="false"
             android:label="@string/title_activity_bottom_sheet"

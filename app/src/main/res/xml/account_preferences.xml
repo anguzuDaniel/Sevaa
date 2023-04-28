@@ -1,0 +1,35 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Profile Settings">
+
+        <Preference
+            app:key="profile_image"
+            app:title="Profile Image" />
+
+        <EditTextPreference
+            app:key="name"
+            app:title="Name"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="email"
+            app:title="Email"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Account Settings">
+
+        <EditTextPreference
+            app:key="username"
+            app:title="Username"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="password"
+            app:title="Password"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

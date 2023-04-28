@@ -36,7 +36,6 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             app:itemIconTint="@color/bottom_nav_item_color"
-            app:labelVisibilityMode="labeled"
             app:itemTextColor="@color/bottom_nav_item_color"
             app:menu="@menu/bottom_menu"
             tools:ignore="VisualLintBottomNav" />
