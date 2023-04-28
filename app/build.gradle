@@ -44,10 +44,7 @@ android {
 }
 
 dependencies {
-    'com.google.android.material:material:1.8.0'
     "androidx.cardview:cardview:1.0.0"
-    implementation 'xyz.vinesh:creditcardview:1.1.9'
-    implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
     implementation 'com.google.firebase:firebase-analytics'

@@ -2,6 +2,10 @@
 
     <PreferenceCategory app:title="@string/messages_header">
 
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="Reset Pin Code" />
+
         <EditTextPreference
             app:key="signature"
             app:title="@string/signature_title"
@@ -21,15 +25,18 @@
 
         <SwitchPreferenceCompat
             app:key="sync"
-            app:title="@string/sync_title" />
+            app:title="Online Payment" />
 
         <SwitchPreferenceCompat
             app:dependency="sync"
             app:key="attachment"
             app:summaryOff="@string/attachment_summary_off"
             app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+            app:title="ATM Withdraw" />
 
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="Contactless Payment" />
     </PreferenceCategory>
 
 </PreferenceScreen>

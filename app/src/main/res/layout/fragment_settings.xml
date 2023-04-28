@@ -41,4 +41,5 @@
             android:textColor="@color/black"
             android:textSize="@dimen/sub_heading_size" />
     </LinearLayout>
+
 </FrameLayout>

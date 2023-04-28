@@ -29,36 +29,36 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // using the gradients to change the background color of cards
-        GradientDrawable expenseGradientDrawable = new GradientDrawable(
-                GradientDrawable.Orientation.TL_BR,
-                new int[]{Color.parseColor("#FFCE54"), Color.parseColor("#F68842")});
-
-        GradientDrawable savingsGradientDrawable = new GradientDrawable(
-                GradientDrawable.Orientation.TL_BR,
-                new int[]{Color.parseColor("#A0D468"), Color.parseColor("#8CC152")});
-
-        // setting the backgrounds
-        CardView expenseCard = view.findViewById(R.id.expense_card);
-        expenseCard.setBackground(expenseGradientDrawable);
-        expenseCard.setRadius(20);
-
-        CardView savingsCard = view.findViewById(R.id.savings_card);
-        savingsCard.setBackground(savingsGradientDrawable);
-        savingsCard.setRadius(20);
-
-        LinearLayout dashboard = view.findViewById(R.id.dashboard);
-        dashboard.bringToFront();
-
-        Bundle bundle = new Bundle();
-        bundle.putString("FirstName", "Daniel");
-        bundle.putString("SurName", "Anguzu");
-        bundle.putInt("Age", 10);
-        bundle.putString("Gender", "Male");
-
-
-        SettingsFragment settingsFragment = new SettingsFragment();
-        settingsFragment.setArguments(bundle);
-        setArguments(bundle);
+//        GradientDrawable expenseGradientDrawable = new GradientDrawable(
+//                GradientDrawable.Orientation.TL_BR,
+//                new int[]{Color.parseColor("#FFCE54"), Color.parseColor("#F68842")});
+//
+//        GradientDrawable savingsGradientDrawable = new GradientDrawable(
+//                GradientDrawable.Orientation.TL_BR,
+//                new int[]{Color.parseColor("#A0D468"), Color.parseColor("#8CC152")});
+//
+//        // setting the backgrounds
+//        CardView expenseCard = view.findViewById(R.id.expense_card);
+//        expenseCard.setBackground(expenseGradientDrawable);
+//        expenseCard.setRadius(20);
+//
+//        CardView savingsCard = view.findViewById(R.id.savings_card);
+//        savingsCard.setBackground(savingsGradientDrawable);
+//        savingsCard.setRadius(20);
+//
+//        LinearLayout dashboard = view.findViewById(R.id.dashboard);
+//        dashboard.bringToFront();
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putString("FirstName", "Daniel");
+//        bundle.putString("SurName", "Anguzu");
+//        bundle.putInt("Age", 10);
+//        bundle.putString("Gender", "Male");
+//
+//
+//        SettingsFragment settingsFragment = new SettingsFragment();
+//        settingsFragment.setArguments(bundle);
+//        setArguments(bundle);
 
 
 

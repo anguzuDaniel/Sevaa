@@ -7,28 +7,39 @@
     tools:context=".UI.fragments.CardFragment"
     android:orientation="vertical">
 
-    <xyz.vinesh.creditcardview.CreditCardView
-        android:id="@+id/card_layout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/card_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardNumber="1234567890123456"
-        app:cardHolderName="John Doe"
-        app:expiry="12/22"
-        app:cvv="123"
-        app:showFront="true"
-        app:cardImage="@drawable/blurry_gradient_haikei"
-        app:cardBackground="@color/black"
-        app:cardTextColor="@color/black"
-        app:cardHintColor="@color/hint_color"
-        app:cardNumberTextColor="@color/black"
-        app:cardHolderTextColor="@color/black"
-        app:expiryTextColor="@color/black"
-        app:cvvTextColor="@color/black"
-        app:cardNumberHint="Card Number"
-        app:cardHolderNameHint="Card Holder Name"
-        app:expiryHint="Expiry"
-        app:cvvHint="CVV"
-        tools:ignore="ExtraText" />
+        android:layout_margin="16dp"
+        android:hint="Credit Card">
+
+<!--        <xyz.vinesh.creditcardview.CreditCardView-->
+<!--            android:id="@+id/card_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardNumber="1234567890123456"-->
+<!--            app:cardHolderName="John Doe"-->
+<!--            app:expiry="12/22"-->
+<!--            app:cvv="123"-->
+<!--            app:showFront="true"-->
+<!--            app:cardImage="@drawable/blurry_gradient_haikei"-->
+<!--            app:cardBackground="@drawable/card_background"-->
+<!--            app:cardTextColor="@color/black"-->
+<!--            app:cardHintColor="@color/hint_color"-->
+<!--            app:cardNumberTextColor="@color/black"-->
+<!--            app:cardHolderTextColor="@color/black"-->
+<!--            app:expiryTextColor="@color/black"-->
+<!--            app:cvvTextColor="@color/black"-->
+<!--            app:cardNumberHint="Card Number"-->
+<!--            app:cardHolderNameHint="Card Holder Name"-->
+<!--            app:expiryHint="Expiry"-->
+<!--            app:cvvHint="CVV"-->
+<!--            tools:ignore="ExtraText" />-->
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
 </LinearLayout>
