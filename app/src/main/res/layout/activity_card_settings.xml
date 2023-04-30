@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.fragments.CardSettingsActivity">
+    tools:context=".UI.fragments.CardSettingsActivity"
+    android:padding="@dimen/page_padding">
 
-    <FrameLayout
-        android:id="@+id/card_settings_container"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="wrap_content"
+        android:text="Profile Settings"
+        android:textColor="@color/black"
+        android:textSize="@dimen/page_heading_size" />
 </LinearLayout>

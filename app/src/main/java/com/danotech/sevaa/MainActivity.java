@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.danotech.sevaa.UI.fragments.CardSettingsFragment;
 import com.danotech.sevaa.UI.fragments.CreditCardFragment;
 import com.danotech.sevaa.UI.fragments.SettingsFragment;
 import com.danotech.sevaa.UI.fragments.HomeFragment;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new SubscriptionsFragment());
                     break;
                 case R.id.more:
-                    replaceFragment(new SettingsFragment());
+                    replaceFragment(new CardSettingsFragment());
                     break;
             }
             return true;

@@ -13,8 +13,5 @@ public class CardSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_settings);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.card_settings_container, new CardSettingsFragment())
-                .commit();
     }
 }
