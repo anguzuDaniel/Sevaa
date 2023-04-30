@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.danotech.sevaa.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -78,5 +81,13 @@ public class CreditCardFragment extends Fragment {
     private boolean validateCreditCard(String cardNumber, String expiryDate, String cvv) {
         // TODO: Implement credit card validation logic
         return true;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Fragment fragment = new CardSettingsFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.card_setting_options, fragment).commit();
     }
 }

@@ -6,7 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.danotech.sevaa.R;
 
@@ -38,5 +41,18 @@ public class SettingsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Fragment accountSettingsFragment = new AccountSettingsFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.account_profile_setting, accountSettingsFragment).commit();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
     }
 }

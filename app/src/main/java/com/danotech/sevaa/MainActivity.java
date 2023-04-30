@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new SubscriptionsFragment());
                     break;
                 case R.id.more:
-                    replaceFragment(new CardSettingsFragment());
+                    replaceFragment(new SettingsFragment());
                     break;
             }
             return true;

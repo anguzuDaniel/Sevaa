@@ -4,30 +4,36 @@
 
         <Preference
             app:key="profile_image"
+            app:icon="@drawable/mastercard"
             app:title="Profile Image" />
 
-        <EditTextPreference
-            app:key="name"
-            app:title="Name"
-            app:useSimpleSummaryProvider="true" />
-
-        <EditTextPreference
-            app:key="email"
-            app:title="Email"
-            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Account Settings">
 
         <EditTextPreference
+            app:key="name"
+            app:title="Name"
+            app:icon="@drawable/baseline_verified_user_24"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="email"
+            app:title="Email"
+            app:icon="@drawable/baseline_email_24"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
             app:key="username"
             app:title="Username"
+            app:icon="@drawable/baseline_person_24"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
             app:key="password"
             app:title="Password"
+            app:icon="@drawable/baseline_password_24"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
