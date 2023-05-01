@@ -32,4 +32,8 @@
     <style name="Widget.Design.BottomNavigationView.BottomSheet" parent="Widget.Design.BottomSheet.Modal">
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
+
+    <style name="ImageView.Circle" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

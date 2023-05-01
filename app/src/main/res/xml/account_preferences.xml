@@ -1,27 +1,26 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory app:title="Settings"
+        app:iconSpaceReserved="false">
 
-    <PreferenceCategory app:title="Profile Settings">
-
-        <Preference
-            app:key="profile_image"
-            app:icon="@drawable/mastercard"
-            app:title="Profile Image" />
-
-
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="Account Settings">
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="theme"
+            app:title="Dark Mode" />
 
         <EditTextPreference
             app:key="name"
             app:title="Name"
             app:icon="@drawable/baseline_verified_user_24"
+            android:dialogMessage="Anguzu Daniel"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
             app:key="email"
             app:title="Email"
             app:icon="@drawable/baseline_email_24"
+            app:summary="anguzudaniel@gmail.com"
+            android:summary="anguzudaniel@gmail.com"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
@@ -36,6 +35,10 @@
             app:icon="@drawable/baseline_password_24"
             app:useSimpleSummaryProvider="true" />
 
+        <EditTextPreference
+            app:key="password"
+            app:title="Logout"
+            app:icon="@drawable/baseline_password_24"
+            app:useSimpleSummaryProvider="false" />
     </PreferenceCategory>
-
 </PreferenceScreen>
