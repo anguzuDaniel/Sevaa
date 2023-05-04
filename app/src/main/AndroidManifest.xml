@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AppBar"
         tools:targetApi="33">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.CreateAccountActivity"
             android:exported="false" />
         <activity

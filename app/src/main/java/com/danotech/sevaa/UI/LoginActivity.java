@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,19 +27,24 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
-    private final Button signInButton = findViewById(R.id.sign_in_button);
-    private TextView welcomeBackMessage = findViewById(R.id.welcome_message);
 
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private SignInButton signInButton;
+    private TextView welcomeBackMessage;
+    FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        signInButton = findViewById(R.id.sign_in_button);
+        welcomeBackMessage = findViewById(R.id.welcome_message);
+        mAuth = FirebaseAuth.getInstance();
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -57,36 +61,44 @@ public class LoginActivity extends AppCompatActivity {
 
         // Set the dimensions of the sign-in button.
         SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
 
         // Get the ID token and the auth code from the GoogleSignInAccount object
-        String idToken = account.getIdToken();
-        String authCode = account.getServerAuthCode();
+        if (account != null) {
+            String idToken = account.getIdToken();
+            String authCode = account.getServerAuthCode();
 
-        // Create a GoogleAuthProvider credential using the ID token and auth code
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, authCode);
 
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+            // Create a GoogleAuthProvider credential using the ID token and auth code
+            AuthCredential credential = GoogleAuthProvider.getCredential(idToken, authCode);
+
+            mAuth.signInWithCredential(credential)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithCredential:failure", task.getException());
+                                Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
+
+                            // ...
                         }
+                    });
 
-                        // ...
-                    }
-                });
+            findViewById(R.id.sign_in_button).setOnClickListener((View.OnClickListener) this);
+            updateUI(account);
+            // rest of your code here
+        } else {
+            // handle the case where the account is null
+        }
+//        This will ensure that the getIdToken() method is only called if the GoogleSignInAccount object is not null.
 
-//        findViewById(R.id.sign_in_button).setOnClickListener(this);
-        updateUI(account);
     }
 
     private void updateUI(Object object) {
