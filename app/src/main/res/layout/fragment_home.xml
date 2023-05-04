@@ -81,7 +81,6 @@
                         android:padding="20dp">
 
                         <TextView
-                            android:id="@+id/balance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -90,6 +89,7 @@
                             android:textColor="@color/white" />
 
                         <TextView
+                            android:id="@+id/balance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -159,10 +159,10 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_arrow_circle_up_24" />
+                            android:src="@drawable/baseline_arrow_circle_up_24"
+                            tools:ignore="ImageContrastCheck" />
 
                         <TextView
-                            android:id="@+id/expenses"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -172,6 +172,7 @@
                             android:textColor="#616161" />
 
                         <TextView
+                            android:id="@+id/expense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
