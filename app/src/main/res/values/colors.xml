@@ -18,4 +18,5 @@
     <color name="black_light">#424141</color>
     <color name="color_transaction_figures">#63B457</color>
     <color name="color_transaction_label">#D45B5B</color>
+    <color name="splash_background">#FFFFFFFF</color>
 </resources>

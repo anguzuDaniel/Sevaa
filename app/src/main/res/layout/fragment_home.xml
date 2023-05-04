@@ -49,6 +49,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/user_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/anguzu_daniel"
@@ -56,6 +57,7 @@
                     </LinearLayout>
 
                     <ImageView
+                        android:id="@+id/profile_pic"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
@@ -79,6 +81,7 @@
                         android:padding="20dp">
 
                         <TextView
+                            android:id="@+id/balance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -132,6 +135,7 @@
                             android:textColor="#616161" />
 
                         <TextView
+                            android:id="@+id/income"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -158,6 +162,7 @@
                             android:src="@drawable/baseline_arrow_circle_up_24" />
 
                         <TextView
+                            android:id="@+id/expenses"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
