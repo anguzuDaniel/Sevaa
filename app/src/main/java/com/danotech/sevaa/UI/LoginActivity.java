@@ -35,7 +35,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
-
     private Button signInButton;
     private TextView welcomeBackMessage;
     private Button signupPage;

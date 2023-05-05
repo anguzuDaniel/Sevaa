@@ -4,48 +4,60 @@ import static android.content.ContentValues.TAG;
 
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class User {
+    public String userID;
     public String firstName;
     public String lastName;
     public String email;
     public String DOB;
-    public String password;
-
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public User(String firstName, String lastName, String email, String DOB, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.DOB = DOB;
-        this.password = password;
+    public User() {
+
     }
 
-    public void addUser() {
-        // Read from the database
-        // Create a new user with a first and last name
+    public void createProfile(String userID, String firstName, String lastName, String username) {
+        // Create a map with the updated fields
         Map<String, Object> user = new HashMap<>();
-        user.put("first_name", firstName);
-        user.put("last_name", lastName);
-        user.put("born", DOB);
-        user.put("email", email);
-        user.put("password", password);
+        user.put("name", Arrays.asList(firstName, lastName));
+        user.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        user.put("Username", username);
+        user.put("born", getDOB());
+
+        // Update the document with the new data
+        db.collection("users").document(userID)
+                .set(user)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!"))
+                .addOnFailureListener(e -> Log.w(TAG, "Error added to document", e));
+    }
+
+    public void updateProfile(String userID, String firstName, String lastName, String username) {
+        // create user with the following fields
+        Map<String, Object> user = new HashMap<>();
+        user.put("name", Arrays.asList(firstName, lastName));
+        user.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        user.put("Username", username);
+        user.put("born", getDOB());
 
         // Add a new document with a generated ID
-        db.collection("savings")
-                .add(user)
-                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId()))
-                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+        // Update the document with the new data
+        db.collection("users").document(userID)
+                .update(user)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
+                .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
     }
 
     public void getSavingInfo() {
-        db.collection("savings")
+        db.collection("users")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -59,23 +71,21 @@ public class User {
                 });
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
+    public Boolean hasProfile(String userID) {
+        String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-    public String getEmail() {
-        return email;
+        if (ID != null && ID == userID) {
+            return true;
+        }
+
+        return false;
     }
 
     public String getDOB() {
         return DOB;
-    }
-
-    public String getPassword() {
-        return password;
     }
 }

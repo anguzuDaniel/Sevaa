@@ -37,7 +37,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -56,13 +56,41 @@
                             android:textColor="#616161" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/profile_pic"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:contentDescription="TODO"
-                        android:src="@drawable/plain_credit_card" />
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_weight="4">-->
+
+                    <!--                        <com.google.android.material.imageview.ShapeableImageView-->
+                    <!--                            android:id="@+id/profile_image"-->
+                    <!--                            android:layout_width="80dp"-->
+                    <!--                            android:layout_height="60dp"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:src="@drawable/profile_default"-->
+                    <!--                            app:srcCompat="@drawable/bg_profile_circle" />-->
+                    <!--                    </LinearLayout>-->
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/profile_default"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/ImageView.Circle"
+                            app:srcCompat="@drawable/bg_profile_circle" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
@@ -190,10 +218,10 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_border"
                 android:orientation="vertical"
-                android:paddingBottom="80dp"
                 android:paddingStart="@dimen/page_padding"
+                android:paddingTop="@dimen/page_padding"
                 android:paddingEnd="@dimen/page_padding"
-                android:paddingTop="@dimen/page_padding">
+                android:paddingBottom="80dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -245,9 +273,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@color/color_background"
+                        android:elevation="1dp"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:elevation="1dp"
                         android:weightSum="6">
 
                         <ImageView
@@ -332,9 +360,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@color/color_background"
+                        android:elevation="1dp"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:elevation="1dp"
                         android:weightSum="6">
 
                         <ImageView
@@ -411,9 +439,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@color/color_background"
+                        android:elevation="1dp"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:elevation="1dp"
                         android:weightSum="6">
 
                         <ImageView

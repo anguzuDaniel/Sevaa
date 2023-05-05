@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CardSettingsActivity">
 
@@ -21,20 +21,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_border"
-                android:elevation="2dp">
+                android:elevation="2dp"
+                android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:padding="@dimen/page_padding"
-                    android:text="Account settings"
-                    android:textColor="#616161"
-                    android:textSize="@dimen/page_heading_size"
                     android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:orientation="horizontal"
+                    android:padding="@dimen/page_padding"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:text="Edit profile"
+                        android:textColor="#616161"
+                        android:textSize="@dimen/page_heading_size" />
+
+                    <Button
+                        android:id="@+id/update_profile_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:contentDescription="@string/add_card"
+                        android:text="update" />
+                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -47,13 +61,13 @@
                         android:layout_height="150dp"
                         android:layout_margin="10dp"
                         android:elevation="2dp"
+                        android:src="@drawable/profile_default"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:shapeAppearanceOverlay="@style/ImageView.Circle"
-                        android:src="@drawable/profile_default"
                         app:srcCompat="@drawable/bg_profile_circle" />
 
                     <ImageView
@@ -69,33 +83,59 @@
                         app:tint="@color/color_primary" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-                <LinearLayout
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="@dimen/page_padding">
+                    android:text="First name"
+                    android:textColor="@color/color_label"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Anguzu Daniel"
-                        android:textColor="@color/color_primary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/profile_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="@dimen/page_padding"
-                        android:text="anguzudaniel2@gmail.com"
-                        android:textColor="#616161"
-                        android:textSize="13sp" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Last name"
+                    android:textColor="@color/color_label"
+                    android:textSize="18sp" />
 
+                <EditText
+                    android:id="@+id/profile_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/color_label"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/profile_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <Button
+                    android:id="@+id/date_picker_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Select Date of Birth" />
             </LinearLayout>
 
 
@@ -103,6 +143,21 @@
                 android:id="@+id/account_profile_setting"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
         </LinearLayout>
+
     </ScrollView>
-</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </RelativeLayout>
+
+</RelativeLayout>
