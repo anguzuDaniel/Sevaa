@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +22,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
@@ -28,9 +32,10 @@ public class SettingsFragment extends Fragment {
 
     private User user;
     private FirebaseAuth firebaseAuth;
-    private View firstName;
-    private View lastName;
-    private View username;
+    private EditText firstName;
+    private EditText lastName;
+    private EditText username;
+
     private String DOB;
     private Button updateProfileButton;
 
@@ -59,27 +64,46 @@ public class SettingsFragment extends Fragment {
 
                 progressBar.setVisibility(View.VISIBLE); // shows a spinner while the profile is being updated
 
-                if (!user.hasProfile(userID)) {
-                    user.createProfile(userID, firstName.toString(), lastName.toString(), username.toString());
-                } else {
-                    user.updateProfile(userID, firstName.toString(), lastName.toString(), username.toString());
-                }
+//                if (!user.hasProfile(userID)) {
+//                    user.createProfile(userID, firstName.toString(), lastName.toString(), username.toString());
+//                } else {
+//                    user.updateProfile(userID, firstName.toString(), lastName.toString(), username.toString());
+//                }
 
-                // Add a listener to hide the progress bar when the update operation is complete
-                db.collection("users").document(userID)
-                        .addSnapshotListener((documentSnapshot, e) -> {
-                            if (e != null) {
-                                Log.w(TAG, "Listen failed.", e);
-                                return;
-                            }
+                // Create a reference to the user document
+                DocumentReference userRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
-                            if (documentSnapshot != null && documentSnapshot.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + documentSnapshot.getData());
-                                progressBar.setVisibility(View.GONE); // hide progress bar here
-                            } else {
-                                Log.d(TAG, "No such document");
-                            }
-                        });
+                // Call the get() method on the reference to retrieve the document
+                userRef.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            // User document does not exist in the users collection
+                            user.updateProfile(userID, firstName.getText().toString(), lastName.getText().toString(), username.getText().toString());
+                            db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                                    .addSnapshotListener((documentSnapshot, e) -> {
+                                        if (e != null) {
+                                            Log.w(TAG, "Listen failed.", e);
+                                            return;
+                                        }
+
+                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                            Log.d(TAG, "DocumentSnapshot data: " + documentSnapshot.getData());
+                                            progressBar.setVisibility(View.GONE); // hide progress bar here
+                                        } else {
+                                            Log.d(TAG, "No such document");
+                                        }
+                                    });
+                            Log.d(TAG, "User exists in the users collection");
+                        } else {
+                            // User document exists in the users collection
+                            user.createProfile(userID, firstName.getText().toString(), lastName.getText().toString(), username.getText().toString());
+                            Log.d(TAG, "User does not exist in the users collection");
+                        }
+                    } else {
+                        Log.d(TAG, "Failed to retrieve user document from the users collection", task.getException());
+                    }
+                });
             }
         });
 

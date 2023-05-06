@@ -34,10 +34,10 @@ public class User {
         user.put("born", getDOB());
 
         // Update the document with the new data
-        db.collection("users").document(userID)
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .set(user)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!"))
-                .addOnFailureListener(e -> Log.w(TAG, "Error added to document", e));
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
     }
 
     public void updateProfile(String userID, String firstName, String lastName, String username) {
@@ -50,7 +50,7 @@ public class User {
 
         // Add a new document with a generated ID
         // Update the document with the new data
-        db.collection("users").document(userID)
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .update(user)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
@@ -76,10 +76,13 @@ public class User {
     }
 
     public Boolean hasProfile(String userID) {
-        String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        if (ID != null && ID == userID) {
-            return true;
+        if (FirebaseAuth.getInstance() != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
+            String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            if (ID != null && ID.equals(userID)) {
+                return true;
+            }
         }
 
         return false;
