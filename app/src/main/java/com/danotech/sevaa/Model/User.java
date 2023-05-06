@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -14,24 +13,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class User {
-    public String userID;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String DOB;
+    public String name;
+    public String born;
+    public String username;
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public User() {
-
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        getUserInfo();
     }
 
-    public void createProfile(String userID, String firstName, String lastName, String username) {
+    public User(String name, String born, String username) {
+        this.name = name;
+        this.born = born;
+        this.username = username;
+    }
+
+    public void createProfile() {
         // Create a map with the updated fields
         Map<String, Object> user = new HashMap<>();
-        user.put("name", Arrays.asList(firstName, lastName));
+        user.put("name", name);
         user.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        user.put("Username", username);
-        user.put("born", getDOB());
+        user.put("username", username);
+        user.put("born", getBorn());
 
         // Update the document with the new data
         db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
@@ -45,8 +49,8 @@ public class User {
         Map<String, Object> user = new HashMap<>();
         user.put("name", Arrays.asList(firstName, lastName));
         user.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        user.put("Username", username);
-        user.put("born", getDOB());
+        user.put("username", username);
+        user.put("born", getBorn());
 
         // Add a new document with a generated ID
         // Update the document with the new data
@@ -56,7 +60,7 @@ public class User {
                 .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
     }
 
-    public void getSavingInfo() {
+    public void getUserInfo() {
         db.collection("users")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -71,12 +75,8 @@ public class User {
                 });
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
-    }
 
     public Boolean hasProfile(String userID) {
-
         if (FirebaseAuth.getInstance() != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
             String ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -88,7 +88,27 @@ public class User {
         return false;
     }
 
-    public String getDOB() {
-        return DOB;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBorn() {
+        return born;
+    }
+
+    public void setBorn(String born) {
+        this.born = born;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

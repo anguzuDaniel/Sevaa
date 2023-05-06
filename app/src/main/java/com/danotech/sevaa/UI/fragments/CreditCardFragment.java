@@ -18,8 +18,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class CreditCardFragment extends Fragment {
     private BottomSheetDialog bottomSheetDialog;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

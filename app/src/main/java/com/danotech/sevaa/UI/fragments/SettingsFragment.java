@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,7 +43,7 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-
+        user = new User();
         firebaseAuth = FirebaseAuth.getInstance();
         firstName = view.findViewById(R.id.profile_first_name);
         lastName = view.findViewById(R.id.profile_last_name);
@@ -54,21 +53,17 @@ public class SettingsFragment extends Fragment {
 
         progressBar.setVisibility(View.GONE);
 
+        displayUserProfileInfo();
         showDatePickerDialog(view);
+
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userID = firebaseAuth.getCurrentUser().getUid();
-                user = new User();
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                 progressBar.setVisibility(View.VISIBLE); // shows a spinner while the profile is being updated
 
-//                if (!user.hasProfile(userID)) {
-//                    user.createProfile(userID, firstName.toString(), lastName.toString(), username.toString());
-//                } else {
-//                    user.updateProfile(userID, firstName.toString(), lastName.toString(), username.toString());
-//                }
 
                 // Create a reference to the user document
                 DocumentReference userRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -78,7 +73,6 @@ public class SettingsFragment extends Fragment {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            // User document does not exist in the users collection
                             user.updateProfile(userID, firstName.getText().toString(), lastName.getText().toString(), username.getText().toString());
                             db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                                     .addSnapshotListener((documentSnapshot, e) -> {
@@ -97,7 +91,9 @@ public class SettingsFragment extends Fragment {
                             Log.d(TAG, "User exists in the users collection");
                         } else {
                             // User document exists in the users collection
-                            user.createProfile(userID, firstName.getText().toString(), lastName.getText().toString(), username.getText().toString());
+                            String name = firstName.getText().toString() + " " + lastName.getText().toString();
+                            user = new User(name, "1997", username.getText().toString());
+                            user.createProfile();
                             Log.d(TAG, "User does not exist in the users collection");
                         }
                     } else {
@@ -148,7 +144,7 @@ public class SettingsFragment extends Fragment {
 
                                 if (user != null) {
                                     // Update your model with the selected date
-                                    user.setDOB(selectedDate);
+                                    user.setBorn(selectedDate);
                                 }
                             }
                         },
@@ -162,6 +158,35 @@ public class SettingsFragment extends Fragment {
 
                 // Show the dialog
                 datePickerDialog.show();
+            }
+        });
+    }
+
+    // displays users information if user has already created a profile
+    public void displayUserProfileInfo() {
+        String userID = firebaseAuth.getCurrentUser().getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Create a reference to the user document
+        DocumentReference userRef = db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+        // Call the get() method on the reference to retrieve the document
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    // User document exists in the users collection
+                    firstName.setText(document.getString("name"));
+                    lastName.setText(document.getString("name"));
+                    username.setText(document.getString("username"));
+                } else {
+                    // User document does not exist in the users collection
+                    firstName.setHint("First name");
+                    lastName.setHint("Last name");
+                    username.setHint("Username");
+                }
+            } else {
+                Log.d(TAG, "Failed to retrieve user document from the users collection", task.getException());
             }
         });
     }

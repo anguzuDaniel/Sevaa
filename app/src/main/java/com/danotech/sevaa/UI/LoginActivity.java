@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.danotech.sevaa.MainActivity;
+import com.danotech.sevaa.Model.Savings;
 import com.danotech.sevaa.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -119,11 +120,15 @@ public class LoginActivity extends AppCompatActivity {
 
             // User is signed in, update UI accordingly
             // Show a welcome message
-            String welcomeMessage = "Welcome, " + user.getDisplayName();
+            String welcomeMessage = "Welcome, " + FirebaseAuth.getInstance().getCurrentUser().getEmail();
             welcomeBackMessage.setText(welcomeMessage);
 
+
+            Savings savings = new Savings();
+            savings.update(3000.0, 500.0);
+
             // Hide the sign-in button
-            signInButton.setVisibility(View.GONE);
+            signInButton.setEnabled(false);
             // Show the sign-out button
             // signOutButton.setVisibility(View.VISIBLE);
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.danotech.sevaa.Model.Savings;
 import com.danotech.sevaa.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -96,8 +97,11 @@ public class SignUpActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
                                 sendEmailVerification(user);
+
+                                Savings savings = new Savings();
+                                savings.update(3000.0, 500.0);
                             } else {
-                                signupMessage.setText("Account was nit created Successfully");
+                                signupMessage.setText("Account was not created Successfully");
                                 Toast.makeText(SignUpActivity.this, "Account creation failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });

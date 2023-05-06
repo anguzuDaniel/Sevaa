@@ -3,6 +3,8 @@ package com.danotech.sevaa.Model;
 import com.danotech.sevaa.UI.fragments.CreditCardFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class CreditCard {
     public static int NUMBER_OF_CARDS;
     public String userID;
@@ -20,4 +22,5 @@ public class CreditCard {
         // this is used to show how many cards a user has
         NUMBER_OF_CARDS++;
     }
+
 }
