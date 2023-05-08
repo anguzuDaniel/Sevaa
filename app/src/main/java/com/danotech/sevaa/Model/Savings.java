@@ -41,6 +41,7 @@ public class Savings {
         savings.put("expenses", expenses);
 //        savings.put("cards", Arrays.asList(cards).iterator());
 
+
         // Add a new document with a generated ID
         db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .set(savings)
@@ -84,16 +85,6 @@ public class Savings {
     }
 
     public void removeCard(CreditCard card) {
-        cards.remove(card);
-    }
-
-    public void addCard(String userID, String cardNumber, String expiryDate, String cvv) {
-        CreditCard card = new CreditCard(userID, cardNumber, expiryDate, cvv);
-        cards.add(card);
-    }
-
-    public void removeCard(String userID, String cardNumber, String expiryDate, String cvv) {
-        CreditCard card = new CreditCard(userID, cardNumber, expiryDate, cvv);
         cards.remove(card);
     }
 
