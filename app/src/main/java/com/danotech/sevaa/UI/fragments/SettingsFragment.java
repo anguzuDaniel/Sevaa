@@ -108,13 +108,6 @@ public class SettingsFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        Fragment accountSettingsFragment = new AccountSettingsFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.account_profile_setting, accountSettingsFragment).commit();
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
     }

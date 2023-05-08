@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.Model.Savings;
@@ -47,6 +49,23 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("balance", balance.getText().toString());
+        outState.putString("income", income.getText().toString());
+        outState.putString("expense", expense.getText().toString());
+        outState.putString("userName", userName.getText().toString());
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        balance.setText(savedInstanceState.getString("balance"));
+        income.setText(savedInstanceState.getString("income"));
+        expense.setText(savedInstanceState.getString("expense"));
+        userName.setText(savedInstanceState.getString("userName"));
     }
 
     public void displayUserProfileInfo() {

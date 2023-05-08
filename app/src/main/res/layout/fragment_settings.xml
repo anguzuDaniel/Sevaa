@@ -10,7 +10,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
         <LinearLayout
@@ -92,47 +92,75 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="First name"
                     android:textColor="@color/color_label"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:endIconMode="clear_text"
+                    android:layout_marginBottom="15dp"
+                    android:hint="First Name"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="0dp">
 
-                <EditText
-                    android:id="@+id/profile_first_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#616161"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/profile_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="#616161"
+                        android:background="@drawable/bordered_input"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                <TextView
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Last name"
                     android:textColor="@color/color_label"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:endIconMode="clear_text"
+                    android:layout_marginBottom="15dp"
+                    android:hint="Last Name"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeWidth="0dp">
 
-                <EditText
-                    android:id="@+id/profile_last_name"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/profile_last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="#616161"
+                        android:background="@drawable/bordered_input"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#616161"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
+                    android:text="Phone"
                     android:textColor="@color/color_label"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:endIconMode="clear_text"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    android:hint="Username"
+                    app:boxStrokeColor="@color/color_primary"
+                    android:background="@drawable/bordered_input"
+                    app:boxStrokeWidth="0dp">
 
-                <EditText
-                    android:id="@+id/profile_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#616161"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/profile_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#616161"
+                        android:background="@drawable/bordered_input"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/date_picker_button"
@@ -140,13 +168,6 @@
                     android:layout_height="wrap_content"
                     android:text="Select Date of Birth" />
             </LinearLayout>
-
-
-            <FrameLayout
-                android:id="@+id/account_profile_setting"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
         </LinearLayout>
 
     </ScrollView>
