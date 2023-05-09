@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
-    private Button signInPage;
+    private TextView signInPage;
     private TextInputEditText signupName, signupEmail, signupPassword, signupPasswordConfirm;
     private Button signupButton;
     private TextView signupMessage;
@@ -101,7 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Savings savings = new Savings();
                                 savings.update(3000.0, 500.0);
                             } else {
-                                signupMessage.setText("Account was not created Successfully");
+                                signupEmail.setError("Account was not created Successfully");
                                 Toast.makeText(SignUpActivity.this, "Account creation failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });

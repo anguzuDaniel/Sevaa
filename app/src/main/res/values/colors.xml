@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_primary">#63B457</color>
+    <color name="color_primary">#388E3C</color>
     <color name="color_background">#EAEFF2</color>
     <color name="nav_item_color">#C14E4E4E</color>
     <color name="status_bar">#C14E4E4E</color>
@@ -19,4 +19,6 @@
     <color name="color_transaction_figures">#63B457</color>
     <color name="color_transaction_label">#D45B5B</color>
     <color name="splash_background">#FFFFFFFF</color>
+    <color name="color_text">#616161</color>
+    <color name="color_error">#FF0000</color>
 </resources>

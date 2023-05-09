@@ -32,13 +32,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Objects;
+
 
 public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
     private Button signInButton;
     private TextView welcomeBackMessage;
-    private Button signupPage;
+    private TextView signupPage;
     private EditText signInEmail, signInPassword;
     FirebaseAuth firebaseAuth;
     private TextView signInMessage;
@@ -61,12 +63,9 @@ public class LoginActivity extends AppCompatActivity {
         // set on click listener for sign in button
         // when clicked, send user to sign up page
         // TODO: 9/30/21 add sign in functionality
-        signupPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        signupPage.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
         // verify a user email address
@@ -75,41 +74,38 @@ public class LoginActivity extends AppCompatActivity {
         // Sets listener for sign in button
         // verifies that a user has entered correct email and password
         // if so, send user to home page
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = signInEmail.getText().toString();
-                String password = signInPassword.getText().toString();
+        signInButton.setOnClickListener(v -> {
+            String email = signInEmail.getText().toString();
+            String password = signInPassword.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
-                    signInEmail.setError("Email is required");
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    signInPassword.setError("Password is required");
-                    return;
-                }
-
-
-                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                        if (user.isEmailVerified()) {
-                            // User's email is verified, proceed with login
-                            // Start the next activity or perform other operations here
-                            updateUI(user);
-                        } else {
-                            // User's email is not verified, show an error message
-                            Toast.makeText(getApplicationContext(), "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
-                        }
-                    } else {
-                        signInMessage.setText("Please verify that the email is correct.");
-                        // An error occurred, show an error message
-                        Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_LONG).show();
-                    }
-                });
+            if (TextUtils.isEmpty(email)) {
+                signInEmail.setError("Email is required");
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                signInPassword.setError("Password is required");
+                return;
+            }
+
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user.isEmailVerified() ) {
+                        // User's email is verified, proceed with login
+                        // Start the next activity or perform other operations here
+                        updateUI(user);
+                    } else {
+                        // User's email is not verified, show an error message
+                        Toast.makeText(getApplicationContext(), "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    signInMessage.setText("Please verify that the email is correct.");
+                    // An error occurred, show an error message
+                    Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_LONG).show();
+                }
+            });
         });
     }
 
@@ -120,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // User is signed in, update UI accordingly
             // Show a welcome message
-            String welcomeMessage = "Welcome, " + FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            String welcomeMessage = "Welcome, " + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
             welcomeBackMessage.setText(welcomeMessage);
 
 

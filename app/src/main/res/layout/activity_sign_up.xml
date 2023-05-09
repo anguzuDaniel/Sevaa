@@ -20,18 +20,16 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:padding="@dimen/page_padding"
-            android:background="@drawable/rose_petals_green">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/page_padding">
 
             <TextView
                 android:id="@+id/sign_in_page_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginTop="50dp"
                 android:text="Register"
-                android:textColor="@color/white"
+                android:textColor="@color/color_primary"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
@@ -40,9 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sign_in_page_title"
-                android:layout_marginBottom="15dp"
                 android:text="Create your Account"
-                android:textColor="@color/white" />
+                android:textColor="@color/color_gray" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -54,11 +51,6 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/sign_up_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -68,7 +60,10 @@
             android:hint="Name"
             app:boxStrokeColor="@color/color_primary"
             app:endIconTint="@color/color_primary"
-            app:startIconDrawable="@drawable/baseline_email_24">
+            app:boxStrokeErrorColor="@color/color_error"
+            android:backgroundTint="@color/color_primary"
+            app:startIconDrawable="@drawable/baseline_person_24"
+            app:boxStrokeWidth="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_name"
@@ -89,7 +84,10 @@
             android:hint="Email"
             app:boxStrokeColor="@color/color_primary"
             app:endIconTint="@color/color_primary"
-            app:startIconDrawable="@drawable/baseline_email_24">
+            app:startIconDrawable="@drawable/baseline_email_24"
+            app:boxStrokeErrorColor="@color/color_error"
+            android:backgroundTint="@color/color_primary"
+            app:boxStrokeWidth="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_email"
@@ -110,7 +108,12 @@
             android:hint="Password"
             app:boxStrokeColor="@color/color_primary"
             app:endIconTint="@color/color_primary"
-            app:startIconDrawable="@drawable/baseline_lock_24">
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:passwordToggleEnabled="true"
+            app:boxStrokeErrorColor="@color/color_error"
+            android:backgroundTint="@color/color_primary"
+            app:boxBackgroundColor="@color/color_primary"
+            app:boxStrokeWidth="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_password"
@@ -127,9 +130,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/input_border"
-            android:hint="Confirm Passsword"
+            android:hint="Confirm Password"
             app:boxStrokeColor="@color/color_primary"
-            app:startIconDrawable="@drawable/baseline_lock_24">
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundColor="@color/color_primary"
+            android:backgroundTint="@color/color_primary"
+            app:boxStrokeWidth="0dp"
+            app:endIconTint="@color/color_primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_password_confirm"
@@ -142,6 +150,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/forgot_password"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:textColor="@color/color_primary"
+            android:layout_marginBottom="10dp"/>
+
         <Button
             android:id="@+id/signup_button"
             android:layout_width="match_parent"
@@ -149,16 +167,8 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/rounded_button"
             android:text="Sign up"
-            android:textColor="@color/color_gray"
+            android:textColor="@color/white"
             tools:ignore="DuplicateSpeakableTextCheck" />
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:backgroundTint="@color/color_primary"
-            android:background="@android:color/transparent" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -170,20 +180,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/forgot_password" />
+                android:gravity="right"
+                android:text="Have an account?"
+                android:textColor="@color/color_text" />
 
-            <Button
+            <TextView
                 android:id="@+id/sign_in_page"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:gravity="right"
-                android:text="Sign In"
+                android:text="Login"
+                android:paddingLeft="10dp"
                 android:textColor="#43A047"
                 android:textSize="18sp"
-                android:textStyle="bold|normal"
                 tools:ignore="RtlHardcoded,TextSizeCheck" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/color_text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="OR" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/color_text" />
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/color_primary"
+            android:background="@android:color/transparent" />
     </LinearLayout>
 </LinearLayout>
