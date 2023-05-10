@@ -1,11 +1,10 @@
 package com.danotech.sevaa;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-
-import com.danotech.sevaa.R;
 import com.danotech.sevaa.UI.Adapters.IntroPageAdapter;
 
 public class IntroActivity extends AppCompatActivity {
@@ -18,8 +17,18 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        int page = getIntent().getIntExtra("page", 0);
+
         introPageAdapter = new IntroPageAdapter(this);
-        viewPager = findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.intro_view_pager);
         viewPager.setAdapter(introPageAdapter);
+        viewPager.setCurrentItem(page);
+
+        // set the current page based on the page number
+        if (page == 1) {
+            viewPager.setCurrentItem(0);
+        } else if (page == 2) {
+            viewPager.setCurrentItem(1);
+        }
     }
 }

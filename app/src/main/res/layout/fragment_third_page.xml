@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.ThirdActivity">
+    android:background="@color/white"
+    tools:context=".UI.fragments.ThirdIntroPageFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,36 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="center"
-
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:src="@drawable/finance_illustration" />
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Get your finances in order"
-            android:textColor="@color/color_text"
-            android:textSize="@dimen/page_heading_size"
-            android:layout_marginBottom="150dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:gravity="bottom"
             android:orientation="vertical"
             android:weightSum="2"
             android:layout_gravity="bottom">
 
             <Button
-                android:id="@+id/next_button"
+                android:id="@+id/intro_sign_in_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_border"
@@ -57,10 +47,11 @@
                 android:layout_marginBottom="15dp"/>
 
             <Button
-                android:id="@+id/skip_button"
+                android:id="@+id/intro_sign_up_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
+                android:textAllCaps="false"
                 android:background="@drawable/rounded_border"
                 android:textColor="@color/white" />
         </LinearLayout>

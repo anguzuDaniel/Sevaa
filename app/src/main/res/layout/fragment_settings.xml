@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_background"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CardSettingsActivity">
 
@@ -22,39 +22,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="2dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:padding="@dimen/page_padding"
                     android:weightSum="3">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@color/white"
-                        android:text="Edit profile"
+                        android:text="Settings"
                         android:textColor="#616161"
                         android:textSize="@dimen/page_heading_size" />
 
-                    <Button
-                        android:id="@+id/update_profile_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:contentDescription="@string/add_card"
-                        android:text="update" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/page_padding">
-
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profile_image"
                         android:layout_width="150dp"
@@ -70,118 +61,217 @@
                         app:shapeAppearanceOverlay="@style/ImageView.Circle"
                         app:srcCompat="@drawable/bg_profile_circle" />
 
-                    <ImageView
-                        android:id="@+id/edit_profile_btn"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="-20dp"
-                        android:layout_marginBottom="10dp"
-                        android:padding="8dp"
-                        android:src="@drawable/baseline_edit_24"
-                        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-                        app:layout_constraintStart_toEndOf="@id/profile_image"
-                        app:tint="@color/color_primary" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="594dp"
+                android:background="@drawable/rounded_border"
                 android:orientation="vertical"
                 android:padding="16dp">
 
-
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
+                    android:id="@+id/account_settings_action"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="First name"
-                    android:textColor="@color/color_label"
-                    android:textSize="18sp"
-                    app:endIconMode="clear_text"
-                    android:layout_marginBottom="15dp"
-                    android:hint="First Name"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeWidth="0dp">
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="16dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/profile_first_name"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="#616161"
-                        android:background="@drawable/bordered_input"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/baseline_person_outline_24" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Last name"
-                    android:textColor="@color/color_label"
-                    android:textSize="18sp"
-                    app:endIconMode="clear_text"
-                    android:layout_marginBottom="15dp"
-                    android:hint="Last Name"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    app:boxStrokeWidth="0dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/profile_last_name"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="#616161"
-                        android:background="@drawable/bordered_input"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:text="Profile"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textColor="@color/color_label"
-                    android:textSize="18sp"
-                    app:endIconMode="clear_text"
-                    app:boxBackgroundColor="@android:color/transparent"
-                    android:hint="Username"
-                    app:boxStrokeColor="@color/color_primary"
-                    android:background="@drawable/bordered_input"
-                    app:boxStrokeWidth="0dp">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/profile_username"
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#616161"
-                        android:background="@drawable/bordered_input"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/date_picker_button"
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#B6B6B6" />
+
+                <LinearLayout
+                    android:id="@+id/account_notification_action"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Select Date of Birth" />
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/baseline_notifications_none_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#B6B6B6" />
+
+                <LinearLayout
+                    android:id="@+id/account_appearance_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/baseline_remove_red_eye_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Appearance"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#B6B6B6" />
+
+                <LinearLayout
+                    android:id="@+id/account_about_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/baseline_info_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="About"
+                        android:textColor="@color/color_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:background="#B6B6B6" />
+
+                <LinearLayout
+                    android:id="@+id/account_logout_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/baseline_logout_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
+                        android:textColor="@color/color_error"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-    </RelativeLayout>
 
 </RelativeLayout>

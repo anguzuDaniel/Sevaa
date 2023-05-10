@@ -119,33 +119,37 @@ public class LoginActivity extends AppCompatActivity {
             String welcomeMessage = "Welcome, " + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
             welcomeBackMessage.setText(welcomeMessage);
 
-
             Savings savings = new Savings();
             savings.update(3000.0, 500.0);
 
             // Hide the sign-in button
             signInButton.setEnabled(false);
+
             // Show the sign-out button
             // signOutButton.setVisibility(View.VISIBLE);
-
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         } else if (object instanceof GoogleSignInAccount) {
             GoogleSignInAccount account = (GoogleSignInAccount) object;
+
             // User is signed in, update UI accordingly
             // Show a welcome message
             String welcomeMessage = "Welcome, " + account.getDisplayName();
             welcomeBackMessage.setText(welcomeMessage);
+
             // Hide the sign-in button
             signInButton.setVisibility(View.GONE);
+
             // Show the sign-out button
 //            signOutButton.setVisibility(View.VISIBLE);
         } else {
             // User is signed out, update UI accordingly
             // Show a message asking the user to sign in
             welcomeBackMessage.setText("Please sign in to continue");
+
             // Show the sign-in button
             signInButton.setVisibility(View.VISIBLE);
+
             // Hide the sign-out button
 //            signOutButton.setVisibility(View.GONE);
         }

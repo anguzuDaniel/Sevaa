@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.danotech.sevaa.UI.ViewPagerAdapter;
-import com.danotech.sevaa.UI.fragments.CardFragment;
 import com.danotech.sevaa.UI.fragments.FirstIntroPageFragment;
 import com.danotech.sevaa.UI.fragments.SecondIntroPageFragment;
 import com.danotech.sevaa.UI.fragments.ThirdIntroPageFragment;
