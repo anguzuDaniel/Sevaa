@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView welcomeBackMessage;
     private TextView signupPage;
     private EditText signInEmail, signInPassword;
-    FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth;
     private TextView signInMessage;
 
 
@@ -92,7 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if (user.isEmailVerified() ) {
+
+                    if (user.isEmailVerified()) {
                         // User's email is verified, proceed with login
                         // Start the next activity or perform other operations here
                         updateUI(user);
@@ -116,8 +117,10 @@ public class LoginActivity extends AppCompatActivity {
 
             // User is signed in, update UI accordingly
             // Show a welcome message
-            String welcomeMessage = "Welcome, " + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
-            welcomeBackMessage.setText(welcomeMessage);
+            if (user.isEmailVerified() && !FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
+                String welcomeMessage = "Welcome, " + FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                welcomeBackMessage.setText(welcomeMessage);
+            }
 
             Savings savings = new Savings();
             savings.update(3000.0, 500.0);
@@ -127,8 +130,7 @@ public class LoginActivity extends AppCompatActivity {
 
             // Show the sign-out button
             // signOutButton.setVisibility(View.VISIBLE);
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, MainActivity.class));
         } else if (object instanceof GoogleSignInAccount) {
             GoogleSignInAccount account = (GoogleSignInAccount) object;
 
@@ -167,8 +169,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

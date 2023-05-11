@@ -62,10 +62,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        balance.setText(savedInstanceState.getString("balance"));
-        income.setText(savedInstanceState.getString("income"));
-        expense.setText(savedInstanceState.getString("expense"));
-        userName.setText(savedInstanceState.getString("userName"));
+        if (savedInstanceState != null) {
+            balance.setText(savedInstanceState.getString("balance"));
+            income.setText(savedInstanceState.getString("income"));
+            expense.setText(savedInstanceState.getString("expense"));
+            userName.setText(savedInstanceState.getString("userName"));
+        }
     }
 
     public void displayUserProfileInfo() {

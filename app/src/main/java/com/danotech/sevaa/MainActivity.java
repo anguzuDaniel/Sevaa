@@ -1,28 +1,24 @@
 package com.danotech.sevaa;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.danotech.sevaa.UI.fragments.CardSettingsFragment;
 import com.danotech.sevaa.UI.fragments.CreditCardFragment;
-import com.danotech.sevaa.UI.fragments.SettingsFragment;
 import com.danotech.sevaa.UI.fragments.HomeFragment;
+import com.danotech.sevaa.UI.fragments.SettingsFragment;
 import com.danotech.sevaa.UI.fragments.SubscriptionsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

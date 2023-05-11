@@ -44,6 +44,12 @@ public class CreditCardFragment extends Fragment {
         if (bottomSheetDialog == null) {
             bottomSheetDialog = new BottomSheetDialog(getContext());
             bottomSheetDialog.setContentView(R.layout.activity_bottom_sheet);
+            View bottomSheetView = getLayoutInflater().inflate(R.layout.activity_bottom_sheet, null);
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
+
+            bottomSheetDialog.setCanceledOnTouchOutside(true); // Allow the user to dismiss the bottom sheet by tapping outside it
+
 
             Button submitButton = bottomSheetDialog.findViewById(R.id.button_submit);
             assert submitButton != null;

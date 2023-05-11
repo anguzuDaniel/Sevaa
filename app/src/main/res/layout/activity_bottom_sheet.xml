@@ -1,81 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bottom_sheet_layout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/page_padding"
+    android:background="@android:color/transparent"
     tools:context="com.danotech.sevaa.UI.BottomSheetActivity"
-    tools:ignore="ExtraText"
-    android:background="@drawable/rounded_border">
-z
-    <LinearLayout
+    tools:ignore="ExtraText">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="25dp">
+        android:background="@android:color/transparent">
 
-        <TextView
+        <FrameLayout
+            android:id="@+id/bottom_sheet_layout"
+            style="?attr/bottomSheetStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add card"
-            android:textSize="@dimen/sub_heading_size"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"/>
+            android:orientation="vertical"
+            android:background="@drawable/rounded_border"
+            android:padding="@dimen/page_padding"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <EditText
-            android:id="@+id/edit_text_card_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="Card Number"
-            android:inputType="number"
-            android:maxLines="1"
-            android:minHeight="48dp"
-            android:singleLine="true" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edit_text_expiration_date"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:hint="Expiration Date (MM/YY)"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edit_text_cvv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_weight="1"
-                android:hint="CVV"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true"
-                tools:ignore="TouchTargetSizeCheck" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="New card"
+                    android:textColor="@color/color_primary"
+                    android:textSize="@dimen/sub_heading_size"
+                    android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/color_primary"
-            android:backgroundTint="@color/color_primary"
-            android:text="Submit"
-            android:textColor="#4A148C" />
-    </LinearLayout>
-</LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/input_border"
+                    android:hint="Card Number"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeWidth="0dp"
+                    app:endIconTint="@color/color_primary"
+                    app:startIconDrawable="@drawable/baseline_credit_card_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_card_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:minHeight="48dp"
+                        android:singleLine="true"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/input_border"
+                    android:hint="Expiration Date (MM/YY)"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeWidth="0dp"
+                    app:endIconTint="@color/color_primary"
+                    app:startIconDrawable="@drawable/baseline_date_range_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_expiration_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:ignore="TextFields,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/input_border"
+                    android:hint="CVV"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeWidth="0dp"
+                    app:endIconTint="@color/color_primary"
+                    app:startIconDrawable="@drawable/baseline_qr_code_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_cvv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="Save Card"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

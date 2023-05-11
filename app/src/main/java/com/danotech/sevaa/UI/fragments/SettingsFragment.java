@@ -1,5 +1,6 @@
 package com.danotech.sevaa.UI.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,14 @@ import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
+import com.danotech.sevaa.UI.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsFragment extends Fragment {
 
     private User user;
     private FirebaseAuth firebaseAuth;
+    LinearLayout accountSettingsAction, logoutAction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,18 +30,21 @@ public class SettingsFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
 
 
-        LinearLayout accountSettingsAction = view.findViewById(R.id.account_settings_action);
-        accountSettingsAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) getActivity();
+        accountSettingsAction = view.findViewById(R.id.account_settings_action);
+        logoutAction = view.findViewById(R.id.account_logout_action);
 
-                // Launch the account settings fragment
-                activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_frame, new AccountSettingsFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
+        accountSettingsAction.setOnClickListener(v -> {
+            // Launch the account settings fragment
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_frame, new AccountFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        logoutAction.setOnClickListener(v -> {
+            firebaseAuth.signOut();
+
+            startActivity(new Intent(getActivity(), LoginActivity.class));
         });
 
         // Inflate the layout for this fragment

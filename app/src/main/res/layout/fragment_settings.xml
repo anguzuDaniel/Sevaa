@@ -62,6 +62,21 @@
                         app:srcCompat="@drawable/bg_profile_circle" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="anguzudaniel2@gmail.com"
+                    android:textColor="@color/color_primary"
+                    android:gravity="center"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Anguzu Daniel"
+                    android:textColor="@color/color_text"
+                    android:gravity="center"/>
             </LinearLayout>
 
             <LinearLayout
