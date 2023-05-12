@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
+    android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.BottomSheetActivity"
     tools:ignore="ExtraText">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent">
+        android:layout_height="730dp">
 
         <FrameLayout
             android:id="@+id/bottom_sheet_layout"
             style="?attr/bottomSheetStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@drawable/rounded_border"
+            android:orientation="vertical"
             android:padding="@dimen/page_padding"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -28,13 +28,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:text="New card"
+                    android:text="@string/new_card"
                     android:textColor="@color/color_primary"
                     android:textSize="@dimen/sub_heading_size"
                     android:textStyle="bold" />
@@ -112,10 +111,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
-                    android:text="Save Card"
+                    android:backgroundTint="@drawable/rounded_button"
+                    android:text="@string/save_card"
                     android:textAllCaps="false"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="TextContrastCheck" />
             </LinearLayout>
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</RelativeLayout>
+</LinearLayout>

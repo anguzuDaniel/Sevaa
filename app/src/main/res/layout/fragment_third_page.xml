@@ -39,7 +39,7 @@
                 android:id="@+id/intro_sign_in_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_border"
+                android:background="@drawable/rounded_button"
                 android:pointerIcon="hand"
                 android:text="Sign In"
                 android:textAllCaps="false"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:textAllCaps="false"
-                android:background="@drawable/rounded_border"
+                android:background="@drawable/rounded_button"
                 android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
