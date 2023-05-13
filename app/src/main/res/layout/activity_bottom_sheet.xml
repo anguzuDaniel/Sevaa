@@ -54,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:inputType="number"
+                        android:inputType="textAutoComplete"
                         android:maxLines="1"
                         android:minHeight="48dp"
                         android:singleLine="true"
@@ -78,7 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:inputType="number"
+                        android:inputType="textAutoComplete"
                         android:maxLines="1"
                         android:singleLine="true"
                         tools:ignore="TextFields,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -100,7 +100,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:inputType="number"
+                        android:inputType="textAutoComplete"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/input_border"
+                    android:hint="Card Name"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    app:boxStrokeWidth="0dp"
+                    app:endIconTint="@color/color_primary"
+                    app:startIconDrawable="@drawable/baseline_qr_code_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_card_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:inputType="textAutoComplete"
                         android:maxLines="1"
                         android:singleLine="true"
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />

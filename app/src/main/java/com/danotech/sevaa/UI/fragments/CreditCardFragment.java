@@ -2,6 +2,7 @@ package com.danotech.sevaa.UI.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.danotech.sevaa.Model.CreditCard;
 import com.danotech.sevaa.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -52,15 +54,17 @@ public class CreditCardFragment extends Fragment {
                 EditText cardNumberEditText = bottomSheetDialog.findViewById(R.id.edit_text_card_number);
                 EditText expiryDateEditText = bottomSheetDialog.findViewById(R.id.edit_text_expiration_date);
                 EditText cvvEditText = bottomSheetDialog.findViewById(R.id.edit_text_cvv);
+                EditText cardNameText = bottomSheetDialog.findViewById(R.id.edit_text_card_name);
 
                 assert cardNumberEditText != null;
                 String cardNumber = cardNumberEditText.getText().toString();
                 String expiryDate = expiryDateEditText.getText().toString();
                 assert cvvEditText != null;
                 String cvv = cvvEditText.getText().toString();
+                String cardName = cardNameText.getText().toString();
 
                 // Validate credit card information
-                boolean isValid = validateCreditCard(cardNumber, expiryDate, cvv);
+                boolean isValid = validateCreditCard(cardNumber, expiryDate, cvv, cardName);
 
                 if (isValid) {
                     // Process payment
@@ -76,8 +80,23 @@ public class CreditCardFragment extends Fragment {
         bottomSheetDialog.show();
     }
 
-    private boolean validateCreditCard(String cardNumber, String expiryDate, String cvv) {
+    private boolean validateCreditCard(String cardNumber, String expiryDate, String cvv, String cardName) {
         // TODO: Implement credit card validation logic
+        if (TextUtils.isEmpty(cardNumber)) {
+            return false;
+        }
+
+        if (TextUtils.isEmpty(expiryDate)) {
+            return false;
+        }
+
+        if (TextUtils.isEmpty(cvv)) {
+            return false;
+        }
+
+        CreditCard creditCard = new CreditCard(cardNumber, expiryDate, cvv, cardName,true, CreditCard.VISA);
+        creditCard.save();
+
         return true;
     }
 

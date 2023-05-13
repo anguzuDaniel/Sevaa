@@ -43,7 +43,8 @@ public class Savings {
 
 
         // Add a new document with a generated ID
-        db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+        db.collection("savings")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .set(savings)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));

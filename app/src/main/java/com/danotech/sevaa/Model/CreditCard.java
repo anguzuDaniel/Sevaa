@@ -2,6 +2,7 @@ package com.danotech.sevaa.Model;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,11 +66,16 @@ public class CreditCard {
         card.put("is_physical_card", this.isPhysicalCard);
         card.put("type", this.cardType);
 
-        // adds a new collection to the savings collection
+        Map<String, Object> saving = new HashMap<>();
+        saving.put(this.number, card);
+
+        // adds a new card collection
         // contains all cards added by the user
         db.collection("savings")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
-                .collection("cards").add(card);
+                .set(new HashMap<String, Object>() {{
+                    put("cards", saving);
+                }}, SetOptions.merge());
     }
 
     public void update(String number, String expiryDate, String cvv, String name, Boolean isPhysicalCard, int type) {
@@ -105,20 +111,14 @@ public class CreditCard {
 
         // adds a new collection to the savings collection
         // contains all cards added by the user
-        db.collection("savings")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
-                .collection("cards").get().getResult().getDocuments().get(0).getReference().update(card);
+        db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).collection("cards").get().getResult().getDocuments().get(0).getReference().update(card);
     }
 
-        public void delete(String cardNumber) {
-        db.collection("savings")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
-                .collection("cards").get().getResult().getDocuments().get(0).getReference().delete();
+    public void delete(String cardNumber) {
+        db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).collection("cards").get().getResult().getDocuments().get(0).getReference().delete();
     }
 
     public String getAllCards() {
-        return db.collection("savings")
-                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
-                .collection("cards").get().getResult().getDocuments().get(0).toString();
+        return db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).collection("cards").get().getResult().getDocuments().get(0).toString();
     }
 }
