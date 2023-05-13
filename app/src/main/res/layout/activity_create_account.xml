@@ -6,7 +6,6 @@
     android:padding="@dimen/page_padding"
     tools:context=".UI.CreateAccountActivity">
 
-
     <EditText
         android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"

@@ -22,13 +22,14 @@ public class IntroActivity extends AppCompatActivity {
         introPageAdapter = new IntroPageAdapter(this);
         viewPager = findViewById(R.id.intro_view_pager);
         viewPager.setAdapter(introPageAdapter);
-        viewPager.setCurrentItem(page);
 
         // set the current page based on the page number
-        if (page == 1) {
+        if (page == 0) {
             viewPager.setCurrentItem(0);
-        } else if (page == 2) {
+        } else if (page == 1) {
             viewPager.setCurrentItem(1);
+        } else if (page == 2) {
+            viewPager.setCurrentItem(2);
         }
     }
 }

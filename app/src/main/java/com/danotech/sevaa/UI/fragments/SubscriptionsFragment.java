@@ -2,13 +2,11 @@ package com.danotech.sevaa.UI.fragments;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.R;
@@ -76,15 +74,6 @@ public class SubscriptionsFragment extends Fragment {
         chart.setEntryLabelColor(R.color.color_transaction_figures);
         chart.setEntryLabelTextSize(12f);
         chart.isUsePercentValuesEnabled();
-
-
-////// Customization options for the pie chart
-////        chart.setDrawEntryLabels(true); // Disable entry labels
-//        chart.setDrawHoleEnabled(true); // Enable the hole in the center
-//        chart.setHoleRadius(30f); // Set the radius of the hole
-//        chart.setHoleColor(Color.WHITE);
-//        chart.setTransparentCircleRadius(40f); // Set the radius of the transparent circle that surrounds the hole
-//        chart.setTransparentCircleColor(Color.TRANSPARENT); // Set the color of the transparent circle to transparent
 
         // Inflate the layout for this fragment
         return view;

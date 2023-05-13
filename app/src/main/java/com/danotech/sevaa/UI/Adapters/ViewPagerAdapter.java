@@ -1,4 +1,4 @@
-package com.danotech.sevaa.UI;
+package com.danotech.sevaa.UI.Adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

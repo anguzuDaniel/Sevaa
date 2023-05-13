@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_background"
     tools:context="com.danotech.sevaa.UI.BottomSheetActivity"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:id="@+id/bottom_sheet_layout"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="730dp">
+        android:layout_height="wrap_content">
 
         <FrameLayout
-            android:id="@+id/bottom_sheet_layout"
             style="?attr/bottomSheetStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/page_padding"
-            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+            android:elevation="5dp"
+            android:padding="@dimen/page_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@android:color/transparent">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -111,7 +111,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
-                    android:backgroundTint="@drawable/rounded_button"
                     android:text="@string/save_card"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -119,4 +118,4 @@
             </LinearLayout>
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</LinearLayout>
+</RelativeLayout>

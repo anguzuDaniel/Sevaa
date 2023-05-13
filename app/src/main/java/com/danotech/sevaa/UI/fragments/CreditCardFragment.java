@@ -1,5 +1,6 @@
 package com.danotech.sevaa.UI.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,26 +29,19 @@ public class CreditCardFragment extends Fragment {
 //        Intent intent = new Intent(getActivity(), CardSettingsActivity.class);
 //        startActivity(intent);
 
+        Context context = getContext();
+
         Button openBottomSheetButton = view.findViewById(R.id.button_add_card);
-        openBottomSheetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showBottomSheet();
-            }
-        });
+        openBottomSheetButton.setOnClickListener(v -> showBottomSheet(context));
 
         return view;
     }
 
 
-    private void showBottomSheet() {
+    private void showBottomSheet(Context context) {
         if (bottomSheetDialog == null) {
-            bottomSheetDialog = new BottomSheetDialog(getContext());
-            bottomSheetDialog.setContentView(R.layout.activity_bottom_sheet);
-            View bottomSheetView = getLayoutInflater().inflate(R.layout.activity_bottom_sheet, null);
-            bottomSheetDialog.setContentView(bottomSheetView);
-            bottomSheetDialog.show();
-
+            bottomSheetDialog = new BottomSheetDialog(context);
+            bottomSheetDialog.setContentView(getLayoutInflater().inflate(R.layout.activity_bottom_sheet, null));
             bottomSheetDialog.setCanceledOnTouchOutside(true); // Allow the user to dismiss the bottom sheet by tapping outside it
 
 
