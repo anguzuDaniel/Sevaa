@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_background"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.SubscriptionsFragment">
 
@@ -14,27 +14,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
 
-            <TextView
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Budgets"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="@dimen/page_heading_size"-->
+<!--                android:padding="@dimen/page_padding"/>-->
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Statistics"
-                android:textColor="@color/black"
-                android:textSize="@dimen/page_heading_size"
-                android:padding="@dimen/page_padding"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:padding="@dimen/page_padding">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="You don't have any budgets yet!!"
+                    android:textColor="@color/color_text"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:padding="@dimen/page_padding"/>
 
-                <include layout="@layout/fragment_chart" />
-
-            </RelativeLayout>
-
-
-
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:src="@drawable/business_management"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -7,8 +7,6 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +15,7 @@ public class Savings {
     public Double balance;
     public Double income;
     public Double expenses;
-    public ArrayList<CreditCard> cards;
+    public HashMap<String, CreditCard> cards = new HashMap<>();
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -32,15 +30,12 @@ public class Savings {
     }
 
     public void save() {
-        cards = new ArrayList<>();
-
         Map<String, Object> savings = new HashMap<>();
         savings.put("userID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         savings.put("balance", calculateBalance(income, expenses));
         savings.put("income", income);
         savings.put("expenses", expenses);
 //        savings.put("cards", Arrays.asList(cards).iterator());
-
 
         // Add a new document with a generated ID
         db.collection("savings")
@@ -51,8 +46,6 @@ public class Savings {
     }
 
     public void update(Double income, Double expenses) {
-        cards = new ArrayList<>();
-
         Map<String, Object> savings = new HashMap<>();
         savings.put("userID", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         savings.put("balance", calculateBalance(income, expenses));
@@ -72,6 +65,7 @@ public class Savings {
                 .whereEqualTo("userID", FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .get().addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+
                         for (int i = 0; i < task.getResult().size(); i++) {
                             Log.d(TAG, task.getResult().getDocuments().get(i).getId() + " => " + task.getResult().getDocuments().get(i).getData());
                         }
@@ -79,14 +73,6 @@ public class Savings {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }).addOnFailureListener(e -> Log.w(TAG, "Error getting documents: ", e));
-    }
-
-    public void addCard(CreditCard card) {
-        cards.add(card);
-    }
-
-    public void removeCard(CreditCard card) {
-        cards.remove(card);
     }
 
     private Double calculateBalance(Double income, Double expenses) {
@@ -132,12 +118,11 @@ public class Savings {
     public void setExpenses(Double expenses) {
         this.expenses = expenses;
     }
-
-    public ArrayList<CreditCard> getCards() {
+    public HashMap<String, CreditCard> getCards() {
         return cards;
     }
 
-    public void setCards(ArrayList<CreditCard> cards) {
+    public void setCards(HashMap<String, CreditCard> cards) {
         this.cards = cards;
     }
 }

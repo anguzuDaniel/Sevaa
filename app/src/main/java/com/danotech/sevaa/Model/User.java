@@ -38,7 +38,8 @@ public class User {
         user.put("born", getBorn());
 
         // Update the document with the new data
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+        db.collection("users")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .set(user)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
@@ -54,7 +55,8 @@ public class User {
 
         // Add a new document with a generated ID
         // Update the document with the new data
-        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+        db.collection("users")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .update(user)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));

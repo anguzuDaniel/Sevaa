@@ -122,8 +122,8 @@ public class LoginActivity extends AppCompatActivity {
                 welcomeBackMessage.setText(welcomeMessage);
             }
 
-            Savings savings = new Savings(FirebaseAuth.getInstance().getCurrentUser().getEmail(), 3000.0, 500.0);
-            savings.save();
+//            Savings savings = new Savings(FirebaseAuth.getInstance().getCurrentUser().getEmail(), 3000.0, 500.0);
+//            savings.save();
 
             // Hide the sign-in button
             signInButton.setEnabled(false);
