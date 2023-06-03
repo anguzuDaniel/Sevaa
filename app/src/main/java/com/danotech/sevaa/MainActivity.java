@@ -24,14 +24,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // navigation bars
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);
 
         replaceFragment(new HomeFragment());
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.home:
                     replaceFragment(new HomeFragment());
@@ -63,5 +61,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_frame, fragment);
         fragmentTransaction.commit();
     }
-
 }

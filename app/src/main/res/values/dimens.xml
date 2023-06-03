@@ -10,4 +10,6 @@
     <dimen name="input_padding">10dp</dimen>
     <dimen name="transaction_label_size">18sp</dimen>
     <dimen name="num_expense">17sp</dimen>
+    <dimen name="padding_settings">25dp</dimen>
+    <dimen name="padding_page">18dp</dimen>
 </resources>

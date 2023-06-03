@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.danotech.sevaa.MainActivity;
-import com.danotech.sevaa.Model.Savings;
 import com.danotech.sevaa.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,8 +30,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import java.util.Objects;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -98,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                         // Start the next activity or perform other operations here
                         updateUI(user);
                     } else {
+                        signInMessage.setText("Please verify your email before logging in.");
                         // User's email is not verified, show an error message
                         Toast.makeText(getApplicationContext(), "Please verify your email before logging in.", Toast.LENGTH_LONG).show();
                     }

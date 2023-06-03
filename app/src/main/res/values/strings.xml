@@ -54,4 +54,11 @@
     <string name="first_page_message">Track your expenses and Know how much you are saving and you manage money the best way</string>
     <string name="save_card">Save Card</string>
     <string name="new_card">New card</string>
+    <string name="profile_information">Profile information</string>
+    <string name="card_settings">Card Settings</string>
+    <string name="appearance">Appearance</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="arrow">arrow</string>
+    <string name="zero">$0.0</string>
 </resources>

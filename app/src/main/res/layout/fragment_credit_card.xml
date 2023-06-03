@@ -8,68 +8,69 @@
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CreditCardFragment">
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rounded_border"
-        android:scrollbars="none">
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="@dimen/page_padding"
+                android:weightSum="4">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/page_padding"
-                    android:weightSum="4">
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/intro"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:orientation="vertical">
+                        android:text="Cards"
+                        android:textColor="#616161"
+                        android:textSize="@dimen/page_heading_size" />
 
-                        <TextView
-                            android:id="@+id/intro"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Cards"
-                            android:textColor="#616161"
-                            android:textSize="@dimen/page_heading_size" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/intro"
-                            android:layout_marginTop="2dp"
-                            android:text="1 physical, 0 Virtual" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="2"
-                        android:gravity="right">
+                        android:layout_below="@+id/intro"
+                        android:layout_marginTop="2dp"
+                        android:text="1 physical, 0 Virtual"
+                        android:textColor="#616161" />
+                </RelativeLayout>
 
-                        <Button
-                            android:id="@+id/button_add_card"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+ Add card"
-                            android:textColor="@color/white" />
-                    </RelativeLayout>
-                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="2"
+                    android:gravity="right">
+
+                    <Button
+                        android:id="@+id/button_add_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+ Add card"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
 
 
                 <LinearLayout
@@ -79,35 +80,19 @@
                     android:padding="@dimen/page_padding">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <HorizontalScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:scrollIndicators="bottom"
-                            android:scrollbars="none">
+                        <include layout="@layout/fragment_card" />
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                        <include layout="@layout/fragment_card" />
 
-                                <include layout="@layout/fragment_card" />
-
-                                <include layout="@layout/fragment_card" />
-
-                                <include layout="@layout/fragment_card" />
-                            </LinearLayout>
-
-                        </HorizontalScrollView>
+                        <include layout="@layout/fragment_card" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/card_setting_options"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            </HorizontalScrollView>
         </LinearLayout>
-    </ScrollView>
+
+
+    </LinearLayout>
 </LinearLayout>

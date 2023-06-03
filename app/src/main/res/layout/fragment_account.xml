@@ -85,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:hint="Last Name"
+            android:hint="User Name"
             android:text="Last name"
             android:textColor="@color/color_label"
             android:textSize="18sp"
@@ -94,7 +94,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_last_name"
+                android:id="@+id/profile_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bordered_input"
@@ -102,30 +102,6 @@
                 android:textColor="#616161"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bordered_input"
-            android:hint="Username"
-            android:text="Phone"
-            android:textColor="@color/color_label"
-            android:textSize="18sp"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxStrokeColor="@color/color_primary"
-            app:boxStrokeWidth="0dp"
-            app:endIconMode="clear_text"
-            android:layout_marginBottom="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bordered_input"
-                android:textColor="#616161"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/date_picker_button"

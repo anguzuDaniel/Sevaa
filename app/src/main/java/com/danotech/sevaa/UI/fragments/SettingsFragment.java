@@ -19,7 +19,7 @@ public class SettingsFragment extends Fragment {
 
     private User user;
     private FirebaseAuth firebaseAuth;
-    LinearLayout accountSettingsAction, logoutAction;
+    LinearLayout accountSettingsAction, logoutAction, cardSettingAction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,12 +31,25 @@ public class SettingsFragment extends Fragment {
 
 
         accountSettingsAction = view.findViewById(R.id.account_settings_action);
+        cardSettingAction = view.findViewById(R.id.account_card_settings);
         logoutAction = view.findViewById(R.id.account_logout_action);
 
         accountSettingsAction.setOnClickListener(v -> {
             // Launch the account settings fragment
-            getActivity().getSupportFragmentManager().beginTransaction()
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
                     .replace(R.id.fragment_frame, new AccountFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        cardSettingAction.setOnClickListener(v -> {
+            // Launch the card fragment
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.account_card_settings, new AccountFragment())
                     .addToBackStack(null)
                     .commit();
         });

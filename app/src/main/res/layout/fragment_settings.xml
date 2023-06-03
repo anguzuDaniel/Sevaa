@@ -21,31 +21,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="25dp"
                 android:elevation="2dp"
                 android:orientation="vertical"
                 android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Settings"
-                        android:textColor="#616161"
-                        android:textSize="@dimen/page_heading_size" />
-
-                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/page_padding">
+
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profile_image"
                         android:layout_width="150dp"
@@ -59,32 +44,37 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:shapeAppearanceOverlay="@style/ImageView.Circle"
-                        app:srcCompat="@drawable/bg_profile_circle" />
+                        app:srcCompat="@drawable/bg_profile_circle"
+                        tools:ignore="ImageContrastCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:text="anguzudaniel2@gmail.com"
                     android:textColor="@color/color_primary"
-                    android:gravity="center"
-                    android:textSize="15sp"/>
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android:text="Anguzu Daniel"
                     android:textColor="@color/color_text"
-                    android:gravity="center"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="594dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/rounded_border"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="@dimen/padding_page">
 
                 <LinearLayout
                     android:id="@+id/account_settings_action"
@@ -93,19 +83,12 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"
-                    android:paddingTop="40dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/baseline_person_outline_24" />
+                    android:paddingVertical="@dimen/padding_settings">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="@string/profile_information"
                         android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -118,6 +101,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
                 </LinearLayout>
@@ -128,25 +112,19 @@
                     android:background="#B6B6B6" />
 
                 <LinearLayout
-                    android:id="@+id/account_notification_action"
+                    android:id="@+id/account_card_settings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/baseline_notifications_none_24" />
+                    android:paddingVertical="@dimen/padding_settings"
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Notifications"
+                        android:text="@string/card_settings"
                         android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -159,6 +137,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
                 </LinearLayout>
@@ -175,19 +154,13 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/baseline_remove_red_eye_24" />
+                    android:paddingVertical="@dimen/padding_settings"
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Appearance"
+                        android:text="@string/appearance"
                         android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -200,6 +173,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
                 </LinearLayout>
@@ -216,19 +190,13 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/baseline_info_24" />
+                    android:paddingVertical="@dimen/padding_settings"
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="About"
+                        android:text="@string/about"
                         android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -241,6 +209,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
 
                 </LinearLayout>
@@ -257,19 +226,13 @@
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/baseline_logout_24" />
+                    android:paddingVertical="@dimen/padding_settings"
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
+                        android:text="@string/logout"
                         android:textColor="@color/color_error"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -282,6 +245,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
             </LinearLayout>

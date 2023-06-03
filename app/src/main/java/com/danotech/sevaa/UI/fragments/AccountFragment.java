@@ -4,17 +4,15 @@ import static android.content.ContentValues.TAG;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
@@ -46,17 +44,27 @@ public class AccountFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firstName = view.findViewById(R.id.profile_first_name);
-        lastName = view.findViewById(R.id.profile_last_name);
         username = view.findViewById(R.id.profile_username);
         updateProfileButton = view.findViewById(R.id.update_profile_button);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
-        getDOB();
+        // date picker button
+        MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select date").build();
 
         progressBar.setVisibility(View.GONE);
 
         displayUserProfileInfo();
-        showDatePickerDialog(view);
+
+        // Get a reference to the button in your layout
+        Button datePickerButton = view.findViewById(R.id.date_picker_button);
+
+        // Set a click listener for the button
+        datePickerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(view);
+            }
+        });
 
         updateProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,45 +148,36 @@ public class AccountFragment extends Fragment {
     }
 
     private void showDatePickerDialog(View view) {
-        // Get a reference to the button in your layout
-        Button datePickerButton = view.findViewById(R.id.date_picker_button);
+        // Get the current date as the default date for the dialog
+        Calendar currentDate = Calendar.getInstance();
+        int year = currentDate.get(Calendar.YEAR);
+        int month = currentDate.get(Calendar.MONTH);
+        int day = currentDate.get(Calendar.DAY_OF_MONTH);
 
-        // Set a click listener for the button
-        datePickerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the current date as the default date for the dialog
-                Calendar currentDate = Calendar.getInstance();
-                int year = currentDate.get(Calendar.YEAR);
-                int month = currentDate.get(Calendar.MONTH);
-                int day = currentDate.get(Calendar.DAY_OF_MONTH);
+        // Create a DatePickerDialog with the current date as the default
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                AccountFragment.this.getContext(),
+                (DatePickerDialog.OnDateSetListener) (view1, year1, month1, dayOfMonth) -> {
+                    // Update your UI with the selected date
+                    String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
 
-                // Create a DatePickerDialog with the current date as the default
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        AccountFragment.this.getContext(),
-                        (DatePickerDialog.OnDateSetListener) (view1, year1, month1, dayOfMonth) -> {
-                            // Update your UI with the selected date
-                            String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+                    if (user != null) {
+                        // Update your model with the selected date
+                        user.setBorn(selectedDate);
+                    }
+                },
+                year,
+                month,
+                day
+        );
 
-                            if (user != null) {
-                                // Update your model with the selected date
-                                user.setBorn(selectedDate);
-                            }
-                        },
-                        year,
-                        month,
-                        day
-                );
+        // Set the maximum date to today's date to prevent users from selecting future dates
+        datePickerDialog
+                .getDatePicker()
+                .setMaxDate(currentDate.getTimeInMillis());
 
-                // Set the maximum date to today's date to prevent users from selecting future dates
-                datePickerDialog
-                        .getDatePicker()
-                        .setMaxDate(currentDate.getTimeInMillis());
-
-                // Show the dialog
-                datePickerDialog.show();
-            }
-        });
+        // Show the dialog
+        datePickerDialog.show();
     }
 
     // displays users information if user has already created a profile
@@ -200,7 +199,6 @@ public class AccountFragment extends Fragment {
                 if (document.exists()) {
                     // User document exists in the users collection
                     firstName.setText(document.getString("name"));
-                    lastName.setText(document.getString("name"));
                     username.setText(document.getString("username"));
                 } else {
                     // User document does not exist in the users collection

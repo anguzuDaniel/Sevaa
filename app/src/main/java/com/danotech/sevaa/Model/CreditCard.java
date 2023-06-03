@@ -12,7 +12,7 @@ public class CreditCard {
     public static final int VISA = 0;
     public static final int MASTERCARD = 1;
     public static final int AMERICAN_EXPRESS = 2;
-    private static int NUMBER_OF_CARDS = 0;
+    public static int NUMBER_OF_CARDS = 0;
     private final String[] types = {"Visa", "Mastercard", "American Express"};
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String number;
@@ -106,10 +106,21 @@ public class CreditCard {
     }
 
     public void delete(String cardNumber) {
-        db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).collection("cards").get().getResult().getDocuments().get(0).getReference().delete();
+        db.collection("savings")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .collection("cards")
+                .get()
+                .getResult()
+                .getDocuments()
+                .get(0)
+                .getReference()
+                .delete();
     }
 
     public String getAllCards() {
+
+
+
         return db.collection("savings")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .collection("cards").get().getResult().getDocuments().get(0).toString();

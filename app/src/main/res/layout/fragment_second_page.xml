@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.fragments.SecondIntroPageFragment"
-    android:background="@color/white"
+    android:background="@color/color_background"
     android:padding="@dimen/page_padding">
 
     <LinearLayout
@@ -20,7 +20,8 @@
             android:text="Create a budget and stick to it"
             android:textColor="@color/color_text"
             android:textSize="@dimen/page_heading_size"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAlignment="center"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
