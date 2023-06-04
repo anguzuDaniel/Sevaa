@@ -1,5 +1,6 @@
 package com.danotech.sevaa.Model;
 
+import com.danotech.sevaa.helpers.CardType;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -8,19 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreditCard {
-    // used to get what card is being used by calling types[cardType]
-    public static final int VISA = 0;
-    public static final int MASTERCARD = 1;
-    public static final int AMERICAN_EXPRESS = 2;
     public static int NUMBER_OF_CARDS = 0;
-    private final String[] types = {"Visa", "Mastercard", "American Express"};
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String number;
     private String expiryDate;
     private String cvv;
     private String name;
     private Boolean isPhysicalCard = false;
-    private String cardType;
+    private CardType cardType;
 
     public CreditCard() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -29,14 +25,13 @@ public class CreditCard {
         number = "";
     }
 
-    public CreditCard(String number, String expiryDate, String cvv, String name, Boolean isPhysicalCard, int type) {
+    public CreditCard(String number, String expiryDate, String cvv, String name, Boolean isPhysicalCard, CardType cardType) {
         this.number = number;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
         this.name = name;
         this.isPhysicalCard = isPhysicalCard;
-
-        getCardType(type);
+        this.cardType = cardType;
 
         NUMBER_OF_CARDS++; // increments when a card is created
     }
@@ -62,14 +57,13 @@ public class CreditCard {
                 }}, SetOptions.merge());
     }
 
-    public void update(String number, String expiryDate, String cvv, String name, Boolean isPhysicalCard, int type) {
+    public void update(String number, String expiryDate, String cvv, String name, Boolean isPhysicalCard, CardType cardType) {
         this.number = number;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
         this.name = name;
         this.isPhysicalCard = isPhysicalCard;
-
-        getCardType(type);
+        this.cardType = cardType;
 
         Map<String, Object> card = new HashMap<>();
         card.put("name", this.name);
@@ -87,24 +81,6 @@ public class CreditCard {
                 .get().getResult().getDocuments().get(0).getReference().update(card);
     }
 
-    private void getCardType(int type) {
-        // convert this to a switch statement
-        switch (type) {
-            case VISA:
-                cardType = types[0];
-                break;
-            case MASTERCARD:
-                cardType = types[1];
-                break;
-            case AMERICAN_EXPRESS:
-                cardType = types[2];
-                break;
-            default:
-                cardType = "Unknown";
-                break;
-        }
-    }
-
     public void delete(String cardNumber) {
         db.collection("savings")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
@@ -118,16 +94,9 @@ public class CreditCard {
     }
 
     public String getAllCards() {
-
-
-
         return db.collection("savings")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .collection("cards").get().getResult().getDocuments().get(0).toString();
-    }
-
-    public String[] getTypes() {
-        return types;
     }
 
     public String getNumber() {
@@ -168,13 +137,5 @@ public class CreditCard {
 
     public void setPhysicalCard(Boolean physicalCard) {
         isPhysicalCard = physicalCard;
-    }
-
-    public String getCardType() {
-        return cardType;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
     }
 }

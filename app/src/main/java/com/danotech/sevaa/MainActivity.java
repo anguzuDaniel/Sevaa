@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.cards:
                     replaceFragment(new CreditCardFragment());
                     break;
-                case R.id.wallet:
-                    replaceFragment(new SubscriptionsFragment());
-                    break;
                 case R.id.more:
                     replaceFragment(new SettingsFragment());
                     break;

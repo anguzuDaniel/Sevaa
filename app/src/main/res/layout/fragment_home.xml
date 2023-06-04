@@ -44,7 +44,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/welcome_back"
-                            android:textColor="#616161"
+                            android:textColor="@color/color_heading"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/anguzu_daniel"
-                            android:textColor="#616161" />
+                            android:textColor="#3c6471" />
                     </LinearLayout>
 
                     <!--                    <LinearLayout-->
@@ -238,7 +238,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Recent Transactions"
-                            android:textColor="#616161"
+                            android:textColor="@color/color_heading"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -298,7 +298,7 @@
                                 android:paddingLeft="8dp"
                                 android:paddingBottom="2dp"
                                 android:text="Netflix"
-                                android:textColor="@color/black"
+                                android:textColor="@color/color_heading"
                                 android:textSize="18sp"
                                 tools:ignore="RtlHardcoded" />
 

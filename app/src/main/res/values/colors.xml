@@ -21,4 +21,5 @@
     <color name="splash_background">#FFFFFFFF</color>
     <color name="color_text">#6e97a5</color>
     <color name="color_error">#FF0000</color>
+    <color name="color_heading">#191c1a</color>
 </resources>

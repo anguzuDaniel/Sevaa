@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_background"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
@@ -11,88 +12,200 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="@dimen/page_padding"
+            android:weightSum="4">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Cards"
+                    android:textColor="@color/color_heading"
+                    android:textSize="@dimen/page_heading_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/intro"
+                    android:layout_marginTop="2dp"
+                    android:text="1 physical, 0 Virtual"
+                    android:textColor="#616161" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            tools:ignore="SpeakableTextPresentCheck">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/page_padding"
-                android:weightSum="4">
+                android:paddingHorizontal="@dimen/page_padding">
 
                 <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
+                    android:id="@+id/button_add_card"
+                    android:layout_width="30dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginEnd="10dp">
 
-                    <TextView
-                        android:id="@+id/intro"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="Cards"
-                        android:textColor="#616161"
-                        android:textSize="@dimen/page_heading_size" />
+                        android:background="@drawable/add_card_border"
+                        android:padding="10dp"
+                        android:src="@drawable/baseline_add_24" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/intro"
-                        android:layout_marginTop="2dp"
-                        android:text="1 physical, 0 Virtual"
-                        android:textColor="#616161" />
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_weight="2"
-                    android:gravity="right">
-
-                    <Button
-                        android:id="@+id/button_add_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+ Add card"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
 
 
                 <LinearLayout
+                    android:id="@+id/cardContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="@dimen/page_padding">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
-                        <include layout="@layout/fragment_card" />
 
-                        <include layout="@layout/fragment_card" />
-
-                        <include layout="@layout/fragment_card" />
-                    </LinearLayout>
                 </LinearLayout>
-            </HorizontalScrollView>
+            </LinearLayout>
+
+
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/page_padding"
+                android:text="Budget"
+                android:textColor="@color/color_heading"
+                android:textSize="@dimen/sub_heading_size"
+                android:textStyle="bold" />
+
+            <!--                <ImageView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="350dp"-->
+            <!--                    android:src="@drawable/business_management" />-->
+
+            <LinearLayout
+                android:id="@+id/budget_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/page_padding">
+
+                <!--                    <com.google.android.material.card.MaterialCardView-->
+                <!--                        android:id="@+id/card_food"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginBottom="10dp"-->
+                <!--                        android:clickable="true">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:background="@drawable/rounded_border"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center"-->
+                <!--                                android:background="#d0e8d6"-->
+                <!--                                android:gravity="center"-->
+                <!--                                android:padding="10dp"-->
+                <!--                                android:text="Food"-->
+                <!--                                android:textColor="@color/color_primary"-->
+                <!--                                android:textSize="@dimen/budget_heading"-->
+                <!--                                android:textStyle="bold" />-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center"-->
+                <!--                                android:gravity="center"-->
+                <!--                                android:orientation="horizontal"-->
+                <!--                                android:padding="15dp"-->
+                <!--                                android:weightSum="3">-->
+
+
+                <!--                                <LinearLayout-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_weight="2"-->
+                <!--                                    android:orientation="vertical">-->
+
+                <!--                                    <TextView-->
+                <!--                                        android:layout_width="wrap_content"-->
+                <!--                                        android:layout_height="wrap_content"-->
+                <!--                                        android:text="Peanut Allergy" />-->
+
+                <!--                                    <TextView-->
+                <!--                                        android:layout_width="wrap_content"-->
+                <!--                                        android:layout_height="wrap_content"-->
+                <!--                                        android:text="December 20" />-->
+
+                <!--                                </LinearLayout>-->
+
+                <!--                                <ImageView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_weight="1"-->
+                <!--                                    android:src="@drawable/baseline_keyboard_arrow_right_24" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+                <!--                    </com.google.android.material.card.MaterialCardView>-->
+                <!--                    -->
+            </LinearLayout>
         </LinearLayout>
 
-
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="bottom|right"
+            android:contentDescription="Add budget"
+            android:text="Budget"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            app:icon="@drawable/baseline_add_24"/>
     </LinearLayout>
-</LinearLayout>
+
+
+</ScrollView>

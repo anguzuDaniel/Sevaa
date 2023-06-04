@@ -12,16 +12,6 @@
         android:icon="@drawable/baseline_credit_card_24"
         android:title="Cards" />
 
-    <!--    <item-->
-    <!--        android:id="@+id/wallet"-->
-    <!--        android:icon="@drawable/baseline_receipt_long_24"-->
-    <!--        android:title="Wallet" />-->
-
-    <item
-        android:id="@+id/wallet"
-        android:icon="@drawable/baseline_account_balance_wallet_24"
-        android:title="wallet" />
-
 
     <item
         android:id="@+id/more"

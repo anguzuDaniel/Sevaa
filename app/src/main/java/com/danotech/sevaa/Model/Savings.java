@@ -54,7 +54,8 @@ public class Savings {
 //        savings.put("cards", Arrays.asList(cards));
 
         // Update new document with a generated ID
-        db.collection("savings").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
+        db.collection("savings")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .update(savings)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully updated!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error updating document", e));
