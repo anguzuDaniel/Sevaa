@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/color_background_compliment"
     android:orientation="vertical"
     tools:context=".UI.SignUpActivity">
 
@@ -39,16 +39,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sign_in_page_title"
                 android:text="Create your Account"
-                android:textColor="@color/color_gray" />
+                android:textColor="@color/color_heading" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="@dimen/page_padding"
         android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:background="@color/color_background"
+        android:layout_marginTop="10dp"
+        >
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +64,8 @@
             app:boxStrokeErrorColor="@color/color_error"
             android:backgroundTint="@color/color_primary"
             app:startIconDrawable="@drawable/baseline_person_24"
-            app:boxStrokeWidth="0dp">
+            app:boxStrokeWidth="0dp"
+            android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_name"
@@ -127,7 +130,6 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/input_border"
             android:hint="Confirm Password"
             app:boxStrokeColor="@color/color_primary"
@@ -136,7 +138,8 @@
             app:boxBackgroundColor="@color/color_primary"
             android:backgroundTint="@color/color_primary"
             app:boxStrokeWidth="0dp"
-            app:endIconTint="@color/color_primary">
+            app:endIconTint="@color/color_primary"
+            android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signup_password_confirm"
@@ -152,12 +155,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/forgot_password"
             android:gravity="right"
             android:layout_gravity="right"
-            android:textColor="@color/color_primary"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color_primary" />
 
         <Button
             android:id="@+id/signup_button"

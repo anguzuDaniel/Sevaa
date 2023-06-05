@@ -11,15 +11,16 @@
     <color name="color_background">#EAEFF2</color>
     <color name="nav_item_color">#C14E4E4E</color>
     <color name="status_bar">#C14E4E4E</color>
-    <color name="nav_item_color_selected">#6e97a5</color>
+    <color name="nav_item_color_selected">#2f9062</color>
     <color name="card_color">#6e97a5</color>
     <color name="color_label">#616161</color>
     <color name="color_gray">#424141</color>
     <color name="black_light">#424141</color>
     <color name="color_transaction_figures">#63B457</color>
-    <color name="color_transaction_label">#D45B5B</color>
+    <color name="color_transaction_label">#191c1a</color>
     <color name="splash_background">#FFFFFFFF</color>
-    <color name="color_text">#6e97a5</color>
-    <color name="color_error">#FF0000</color>
-    <color name="color_heading">#191c1a</color>
+    <color name="color_text">#2f9062</color>
+    <color name="color_error">#93000a</color>
+    <color name="color_heading">#2f9062</color>
+    <color name="color_background_compliment">#b5ccbb</color>
 </resources>

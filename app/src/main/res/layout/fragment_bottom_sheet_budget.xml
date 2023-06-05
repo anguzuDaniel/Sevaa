@@ -77,26 +77,6 @@
                         tools:ignore="TextFields,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="From to"
-                    app:boxStrokeColor="@color/color_gray"
-                    app:boxStrokeWidth="1dp"
-                    app:hintTextColor="@color/color_gray">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/budget_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textAutoComplete"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <Button
                     android:id="@+id/button_submit"
                     android:layout_width="match_parent"

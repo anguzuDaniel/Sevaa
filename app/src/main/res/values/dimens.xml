@@ -5,7 +5,7 @@
     <dimen name="sub_heading_size">25sp</dimen>
     <dimen name="card_shadow">2sp</dimen>
     <dimen name="card_image_size">25dp</dimen>
-    <dimen name="card_radius">10dp</dimen>
+    <dimen name="card_radius">20dp</dimen>
     <dimen name="card_text_margin_top">10dp</dimen>
     <dimen name="input_padding">10dp</dimen>
     <dimen name="transaction_label_size">18sp</dimen>

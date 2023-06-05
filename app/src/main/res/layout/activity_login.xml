@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/color_background_compliment"
     android:orientation="vertical"
     tools:context=".UI.LoginActivity">
 
@@ -40,7 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sign_in_page_title"
                 android:text="Have an account? Sign in to continue"
-                android:textColor="@color/color_gray" />
+                android:textColor="@color/color_heading"
+                android:textSize="18sp"
+                android:layout_marginBottom="20dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -48,13 +50,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/page_padding">
+        android:padding="@dimen/page_padding"
+        android:background="@color/color_background">
 
         <TextView
             android:id="@+id/sign_in_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
             android:textColor="#f44336" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +86,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/input_border"
             android:hint="@string/enter_password"
             app:boxBackgroundColor="@android:color/transparent"
@@ -106,10 +110,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/sign_in_page_title"
             android:layout_gravity="end"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:gravity="end"
             android:text="Sign in to your Account"
-            android:textColor="#388E3C"
+            android:textColor="@color/color_heading"
             android:textStyle="bold" />
 
         <Button
@@ -126,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginVertical="20dp"
             android:weightSum="2">
 
             <TextView

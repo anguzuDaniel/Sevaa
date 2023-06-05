@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
+    android:background="@drawable/background_transparent"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context="com.danotech.sevaa.UI.fragments.HomeFragment">
@@ -12,6 +12,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:isScrollContainer="true"
         android:scrollbars="none">
 
         <LinearLayout
@@ -44,7 +46,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/welcome_back"
-                            android:textColor="@color/color_heading"
+                            android:textColor="@color/color_background"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
 
@@ -53,7 +55,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/anguzu_daniel"
-                            android:textColor="#3c6471" />
+                            android:textColor="@color/color_background" />
                     </LinearLayout>
 
                     <!--                    <LinearLayout-->
@@ -97,13 +99,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/color_primary"
                     app:cardCornerRadius="@dimen/card_radius">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:background="@drawable/balance_background"
+                        android:background="@drawable/background_atm_transparent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="20dp">
@@ -114,7 +117,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="Your Balance"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/color_background" />
 
                         <TextView
                             android:id="@+id/balance"
@@ -123,7 +126,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/white"
+                            android:textColor="@color/color_background"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -160,7 +163,7 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Income"
-                            android:textColor="#616161" />
+                            android:textColor="@color/color_background" />
 
                         <TextView
                             android:id="@+id/income"
@@ -169,7 +172,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/black"
+                            android:textColor="@color/color_background"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -197,7 +200,7 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Expenses"
-                            android:textColor="#616161" />
+                            android:textColor="@color/color_background" />
 
                         <TextView
                             android:id="@+id/expense"
@@ -206,7 +209,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/black"
+                            android:textColor="@color/color_background"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -216,19 +219,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_border"
+                android:background="@drawable/right_rounded_corner"
+                android:elevation="10dp"
                 android:orientation="vertical"
-                android:padding="@dimen/padding_page">
+                android:padding="@dimen/padding_page"
+                android:paddingBottom="40dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="8dp"
                         android:orientation="horizontal"
                         android:weightSum="5">
@@ -238,7 +243,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Recent Transactions"
-                            android:textColor="@color/color_heading"
+                            android:textColor="@color/color_primary"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -249,7 +254,7 @@
                             android:layout_weight="4"
                             android:gravity="right"
                             android:text="view all"
-                            android:textColor="#2E7D32"
+                            android:textColor="@color/color_transaction_label"
                             tools:ignore="RtlHardcoded" />
                     </LinearLayout>
                 </LinearLayout>
@@ -265,253 +270,33 @@
                         android:layout_marginTop="15dp"
                         android:text="Today" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/color_background"
-                        android:elevation="1dp"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:weightSum="6">
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:contentDescription="TODO"
-                            android:padding="2dp"
-                            android:src="@drawable/netflix" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:paddingBottom="2dp"
-                                android:text="Netflix"
-                                android:textColor="@color/color_heading"
-                                android:textSize="18sp"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:text="Subscription"
-                                android:textSize="12sp"
-
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:paddingBottom="2dp"
-                                android:text="-$4.99/month"
-                                android:textColor="@color/color_transaction_label"
-                                android:textStyle="bold"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="right"
-                                android:paddingLeft="8dp"
-                                android:text="5:30pm"
-                                android:textSize="12sp"
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Yesterday" />
 
                     <LinearLayout
+                        android:id="@+id/expense_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/color_background"
-                        android:elevation="1dp"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:weightSum="6">
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:contentDescription="TODO"
-                            android:padding="2dp"
-                            android:src="@drawable/kfc" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:paddingBottom="2dp"
-                                android:text="KFC"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:text="One time payment"
-                                android:textSize="12sp"
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:paddingBottom="2dp"
-                                android:text="-$89.69"
-                                android:textColor="@color/color_transaction_label"
-                                android:textStyle="bold"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="right"
-                                android:paddingLeft="8dp"
-                                android:text="8:18pm"
-                                android:textSize="12sp"
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/color_background"
-                        android:elevation="1dp"
-                        android:orientation="horizontal"
-                        android:padding="10dp"
-                        android:weightSum="6">
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:contentDescription="TODO"
-                            android:padding="2dp"
-                            android:src="@drawable/mastercard" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:paddingBottom="2dp"
-                                android:text="Rent"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="left"
-                                android:paddingLeft="8dp"
-                                android:text="Subscription"
-                                android:textSize="12sp"
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:orientation="vertical"
-                            tools:ignore="Suspicious0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:paddingBottom="2dp"
-                                android:text="-$115.00/month"
-                                android:textColor="@color/color_transaction_label"
-                                android:textStyle="bold"
-                                tools:ignore="RtlHardcoded" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="right"
-                                android:paddingLeft="8dp"
-                                android:text="10:20pm"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                tools:ignore="RtlHardcoded,TextSizeCheck" />
-                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
+        android:id="@+id/extended_fab_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/color_primary"
+        android:contentDescription="Add budget"
+        android:text="Expense"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:icon="@drawable/baseline_add_24"
+        app:cornerRadius="0dp"
+        app:iconTint="@color/white" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

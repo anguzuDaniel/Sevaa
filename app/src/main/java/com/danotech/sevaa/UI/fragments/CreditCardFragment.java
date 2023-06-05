@@ -124,12 +124,11 @@ public class CreditCardFragment extends Fragment {
                 // Get credit card information from form
                 EditText budgetTitleText = bottomSheetDialog.findViewById(R.id.budget_title);
                 EditText budgetNameText = bottomSheetDialog.findViewById(R.id.budget_name);
-                EditText budgetDateText = bottomSheetDialog.findViewById(R.id.budget_date);
+
 
                 assert budgetTitleText != null;
                 String budgetTitle = budgetTitleText.getText().toString();
                 String budgetName = budgetNameText.getText().toString();
-                assert budgetDateText != null;
 
                 String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 

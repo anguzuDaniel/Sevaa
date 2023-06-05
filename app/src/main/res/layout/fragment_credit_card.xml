@@ -1,211 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/color_background"
+    android:background="@drawable/background_transparent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CreditCardFragment">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:isScrollContainer="true">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/page_padding"
-            android:weightSum="4">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/intro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="Cards"
-                    android:textColor="@color/color_heading"
-                    android:textSize="@dimen/page_heading_size"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/intro"
-                    android:layout_marginTop="2dp"
-                    android:text="1 physical, 0 Virtual"
-                    android:textColor="#616161" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            tools:ignore="SpeakableTextPresentCheck">
-
-
-
-            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/page_padding">
-
-                <RelativeLayout
-                    android:id="@+id/button_add_card"
-                    android:layout_width="30dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/add_card_border"
-                        android:padding="10dp"
-                        android:src="@drawable/baseline_add_24" />
-
-                </RelativeLayout>
+                android:layout_height="wrap_content">
 
 
                 <LinearLayout
-                    android:id="@+id/cardContainer"
+                    android:id="@+id/head"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="@dimen/page_padding">
 
 
+                    <TextView
+                        android:id="@+id/intro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cards"
+                        android:textColor="@color/color_background"
+                        android:textSize="@dimen/page_heading_size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/intro"
+                        android:text="1 physical, 0 Virtual"
+                        android:textColor="@color/color_background" />
+
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/head"
+                    android:scrollbars="none"
+                    tools:ignore="SpeakableTextPresentCheck">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/page_padding">
+
+                        <RelativeLayout
+                            android:id="@+id/button_add_card"
+                            android:layout_width="30dp"
+                            android:layout_height="200dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/add_card_border"
+                                android:padding="10dp"
+                                android:src="@drawable/baseline_add_24" />
+
+                        </RelativeLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/cardContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/page_padding">
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="40dp"
+                android:background="@color/color_background"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/page_padding"
+                    android:text="Budget"
+                    android:textColor="@color/color_primary"
+                    android:textSize="@dimen/sub_heading_size"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/budget_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/color_background"
+                    android:orientation="vertical"
+                    android:padding="@dimen/page_padding">
 
                 </LinearLayout>
             </LinearLayout>
 
-
-
-        </HorizontalScrollView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/page_padding"
-                android:text="Budget"
-                android:textColor="@color/color_heading"
-                android:textSize="@dimen/sub_heading_size"
-                android:textStyle="bold" />
-
-            <!--                <ImageView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="350dp"-->
-            <!--                    android:src="@drawable/business_management" />-->
-
-            <LinearLayout
-                android:id="@+id/budget_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/page_padding">
-
-                <!--                    <com.google.android.material.card.MaterialCardView-->
-                <!--                        android:id="@+id/card_food"-->
-                <!--                        android:layout_width="match_parent"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_marginBottom="10dp"-->
-                <!--                        android:clickable="true">-->
-
-                <!--                        <LinearLayout-->
-                <!--                            android:layout_width="match_parent"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:background="@drawable/rounded_border"-->
-                <!--                            android:orientation="vertical">-->
-
-                <!--                            <TextView-->
-                <!--                                android:layout_width="match_parent"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:layout_gravity="center"-->
-                <!--                                android:background="#d0e8d6"-->
-                <!--                                android:gravity="center"-->
-                <!--                                android:padding="10dp"-->
-                <!--                                android:text="Food"-->
-                <!--                                android:textColor="@color/color_primary"-->
-                <!--                                android:textSize="@dimen/budget_heading"-->
-                <!--                                android:textStyle="bold" />-->
-
-                <!--                            <LinearLayout-->
-                <!--                                android:layout_width="match_parent"-->
-                <!--                                android:layout_height="wrap_content"-->
-                <!--                                android:layout_gravity="center"-->
-                <!--                                android:gravity="center"-->
-                <!--                                android:orientation="horizontal"-->
-                <!--                                android:padding="15dp"-->
-                <!--                                android:weightSum="3">-->
-
-
-                <!--                                <LinearLayout-->
-                <!--                                    android:layout_width="match_parent"-->
-                <!--                                    android:layout_height="wrap_content"-->
-                <!--                                    android:layout_weight="2"-->
-                <!--                                    android:orientation="vertical">-->
-
-                <!--                                    <TextView-->
-                <!--                                        android:layout_width="wrap_content"-->
-                <!--                                        android:layout_height="wrap_content"-->
-                <!--                                        android:text="Peanut Allergy" />-->
-
-                <!--                                    <TextView-->
-                <!--                                        android:layout_width="wrap_content"-->
-                <!--                                        android:layout_height="wrap_content"-->
-                <!--                                        android:text="December 20" />-->
-
-                <!--                                </LinearLayout>-->
-
-                <!--                                <ImageView-->
-                <!--                                    android:layout_width="wrap_content"-->
-                <!--                                    android:layout_height="wrap_content"-->
-                <!--                                    android:layout_weight="1"-->
-                <!--                                    android:src="@drawable/baseline_keyboard_arrow_right_24" />-->
-                <!--                            </LinearLayout>-->
-
-                <!--                        </LinearLayout>-->
-                <!--                    </com.google.android.material.card.MaterialCardView>-->
-                <!--                    -->
-            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/extended_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:layout_gravity="bottom|right"
-            android:contentDescription="Add budget"
-            android:text="Budget"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            app:iconTint="@color/white"
-            app:icon="@drawable/baseline_add_24"/>
-    </LinearLayout>
-
-
-</ScrollView>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
+        android:id="@+id/extended_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/color_primary"
+        android:contentDescription="Add budget"
+        android:text="Budget"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:icon="@drawable/baseline_add_24"
+        app:cornerRadius="0dp"
+        app:iconTint="@color/white" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

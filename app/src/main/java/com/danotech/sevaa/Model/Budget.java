@@ -30,7 +30,7 @@ public class Budget {
     private String date;
 
     public Budget() {
-
+        // Do not remove
     }
 
     public Budget(String title, String name, String date) {
