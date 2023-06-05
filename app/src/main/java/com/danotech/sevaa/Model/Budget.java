@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Budget {
-
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String title;
     private String name;

@@ -61,4 +61,12 @@
     <string name="logout">Logout</string>
     <string name="arrow">arrow</string>
     <string name="zero">$0.0</string>
+    <string name="expense_type">Type</string>
+    <string name="subscription">subscription</string>
+    <string name="onetime_payment">one time payment</string>
+
+    <string-array name="expense_type">
+        <item>@string/subscription</item>
+        <item>@string/onetime_payment</item>
+    </string-array>
 </resources>

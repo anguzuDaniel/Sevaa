@@ -2,26 +2,38 @@ package com.danotech.sevaa.UI.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.Model.CreditCard;
+import com.danotech.sevaa.Model.Expense;
 import com.danotech.sevaa.Model.Savings;
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
+import com.danotech.sevaa.helpers.ExpenseType;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -29,6 +41,9 @@ public class HomeFragment extends Fragment {
     Savings savings;
     CreditCard creditCard;
     TextView balance, income, expense, userName;
+    private BottomSheetDialog bottomSheetDialog;
+    ExpenseType expenseType;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +56,13 @@ public class HomeFragment extends Fragment {
         income = view.findViewById(R.id.income);
         expense = view.findViewById(R.id.expense);
         userName = view.findViewById(R.id.user_name);
+
+        Context context = getContext();
+        ExtendedFloatingActionButton fab = view.findViewById(R.id.extended_fab_expense);
+
+        fab.setOnClickListener(v -> {
+            showBottomSheetBudget(context);
+        });
 
         displayUserProfileInfo();
 
@@ -72,6 +94,52 @@ public class HomeFragment extends Fragment {
             userName.setText(savedInstanceState.getString("userName"));
         }
     }
+
+    private void showBottomSheetBudget(Context context) {
+        if (bottomSheetDialog == null) {
+            bottomSheetDialog = new BottomSheetDialog(context);
+            bottomSheetDialog.setContentView(getLayoutInflater()
+                    .inflate(R.layout.fragment_bottom_sheet_expense, null));
+            bottomSheetDialog.setCanceledOnTouchOutside(true); // Allow the user to dismiss the bottom sheet by tapping outside it
+
+
+            Button submitButton = bottomSheetDialog.findViewById(R.id.button_submit);
+            assert submitButton != null;
+            submitButton.setOnClickListener(v -> {
+                // Get credit card information from form
+                EditText expenseTitleText = bottomSheetDialog.findViewById(R.id.expense_name);
+                EditText expenseNameText = bottomSheetDialog.findViewById(R.id.expense_price);
+                AutoCompleteTextView autoCompleteTextView = bottomSheetDialog.findViewById(R.id.expense_type);
+
+
+                assert expenseTitleText != null;
+                String expenseName = expenseTitleText.getText().toString();
+                String expensePrice = expenseNameText.getText().toString();
+
+                String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+
+                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Get the selected item's ID
+                        long selectedId = id;
+
+                        expenseType = ExpenseType.getExpenseTypeById(id);
+                        Expense expense = new Expense(expenseName, expenseType, expensePrice, timeStamp);
+                        expense.Save();
+                    }
+                });
+
+
+
+                Toast.makeText(getContext(), "Budget added", Toast.LENGTH_SHORT).show();
+                bottomSheetDialog.dismiss();
+            });
+        }
+
+        bottomSheetDialog.show();
+    }
+
 
     public void displayUserProfileInfo() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
