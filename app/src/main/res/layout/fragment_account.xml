@@ -29,7 +29,7 @@
             android:padding="@dimen/page_padding">
 
             <ImageView
-                android:id="@+id/edit_profile_btn"
+                android:id="@+id/edit_profile_image_btn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="-40dp"
@@ -73,7 +73,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/profile_first_name"
+                android:id="@+id/profile_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bordered_input"
@@ -109,7 +109,8 @@
             android:id="@+id/date_picker_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Date of Birth" />
+            android:text="Select Date of Birth"
+            android:textAllCaps="false"/>
 
 
         <Button

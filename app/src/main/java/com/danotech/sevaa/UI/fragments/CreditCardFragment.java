@@ -24,6 +24,7 @@ import com.danotech.sevaa.Model.Budget;
 import com.danotech.sevaa.Model.CreditCard;
 import com.danotech.sevaa.R;
 import com.danotech.sevaa.helpers.CardType;
+import com.danotech.sevaa.helpers.DateConversion;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -249,8 +250,8 @@ public class CreditCardFragment extends Fragment {
                             LinearLayout budgetContainer = view.findViewById(R.id.budget_container);
 
                             String title = document.getString("title") != null ? document.getString("title") : "";
-                            String name = document.getString("title") != null ? document.getString("name") : "";
-                            String date = document.getString("title") != null ? document.getString("date") : "";
+                            String name = document.getString("name") != null ? document.getString("name") : "";
+                            String date = document.getString("date") != null ? document.getString("date") : "";
 
                             View budgetCard = getLayoutInflater().inflate(R.layout.budget_card, null);
 
@@ -260,7 +261,7 @@ public class CreditCardFragment extends Fragment {
 
                             titleText.setText(title);
                             nameText.setText(name);
-                            dateText.setText(date);
+                            dateText.setText(DateConversion.convert(date));
 
                             budgetContainer.addView(budgetCard);
 

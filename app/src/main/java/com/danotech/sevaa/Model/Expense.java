@@ -19,7 +19,9 @@ public class Expense {
     private String date;
 
     public Expense() {
-        // do not delete
+        // Default constructor required for calls to DataSnapshot.getValue(Expense.class)
+        // this is required for firebase
+        // do not remove
     }
 
     public Expense(String name, ExpenseType expenseType, String price, String date) {
@@ -33,22 +35,25 @@ public class Expense {
         Map<String, Object> budget = new HashMap<>();
         budget.put("id", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         budget.put("name", this.name);
-        budget.put("expense_type", this.expenseType);
+        budget.put("expense_type", this.expenseType.name());
         budget.put("price", this.price);
         budget.put("date", this.date);
 
-        db.collection("expense").document().set(budget).addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!")).addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
+        db.collection("expense")
+                .document()
+                .set(budget)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!"))
+                .addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
     }
 
     public void update() {
         Map<String, Object> budget = new HashMap<>();
         budget.put("id", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         budget.put("name", this.name);
-        budget.put("expense_type", this.expenseType);
+        budget.put("expense_type", this.expenseType.name());
         budget.put("price", this.price);
         budget.put("date", this.date);
 
         db.collection("expense").document().update(budget).addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully added!")).addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
     }
-
 }

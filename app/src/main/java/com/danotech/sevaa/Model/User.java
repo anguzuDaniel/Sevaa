@@ -45,10 +45,10 @@ public class User {
                 .addOnFailureListener(e -> Log.w(TAG, "Error adding to document", e));
     }
 
-    public void updateProfile(String userID, String firstName, String lastName, String username) {
+    public void updateProfile(String userID, String name, String username) {
         // create user with the following fields
         Map<String, Object> user = new HashMap<>();
-        user.put("name", Arrays.asList(firstName, lastName));
+        user.put("name", name);
         user.put("email", FirebaseAuth.getInstance().getCurrentUser().getEmail());
         user.put("username", username);
         user.put("born", getBorn());

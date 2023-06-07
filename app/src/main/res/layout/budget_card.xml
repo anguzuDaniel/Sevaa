@@ -51,13 +51,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Peanut Allergy"
-                        android:textColor="@color/color_heading"
+                        android:textColor="@color/color_transaction_label"
                         android:layout_marginBottom="5dp"/>
 
                     <TextView
                         android:id="@+id/budget_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/color_transaction_label"
                         android:text="December 20" />
 
                 </LinearLayout>

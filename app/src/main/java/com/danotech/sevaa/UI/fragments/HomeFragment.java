@@ -3,37 +3,51 @@ package com.danotech.sevaa.UI.fragments;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.danotech.sevaa.Model.CreditCard;
 import com.danotech.sevaa.Model.Expense;
+import com.danotech.sevaa.Model.ProfileHandler;
 import com.danotech.sevaa.Model.Savings;
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
+import com.danotech.sevaa.helpers.DateConversion;
 import com.danotech.sevaa.helpers.ExpenseType;
+import com.danotech.sevaa.helpers.MyRecyclerViewAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -43,7 +57,12 @@ public class HomeFragment extends Fragment {
     TextView balance, income, expense, userName;
     private BottomSheetDialog bottomSheetDialog;
     ExpenseType expenseType;
-
+    private RecyclerView recyclerView;
+    private MyRecyclerViewAdapter adapter;
+    private List<Expense> dataList;
+    Expense exp;
+    private StorageReference storageReference;
+    ImageView imageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +75,7 @@ public class HomeFragment extends Fragment {
         income = view.findViewById(R.id.income);
         expense = view.findViewById(R.id.expense);
         userName = view.findViewById(R.id.user_name);
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         Context context = getContext();
         ExtendedFloatingActionButton fab = view.findViewById(R.id.extended_fab_expense);
@@ -72,8 +92,72 @@ public class HomeFragment extends Fragment {
             userName.setText(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
         }
 
+        displayExpenseCards(view);
+
+
+        // Add swipe-to-delete functionality
+        ItemTouchHelper.SimpleCallback swipeToDeleteCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                // Not needed for swipe-to-delete functionality
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                dataList.remove(position);
+                adapter.notifyItemRemoved(position);
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeToDeleteCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        displayProfileInfo(view);
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public void displayExpenseCards(View view) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("expense")
+                .whereEqualTo("id", FirebaseAuth.getInstance().getCurrentUser().getEmail())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            LinearLayout budgetContainer = view.findViewById(R.id.expense_container);
+
+                            String name = document.getString("name") != null ? document.getString("name") : "";
+                            String price = document.getString("price") != null ? document.getString("price") : "";
+                            String date = document.getString("date") != null ? document.getString("date") : "";
+                            String expenseType = document.getString("expense_type") != null ? document.getString("expense_type") : "payment";
+
+                            View expenseCard = getLayoutInflater().inflate(R.layout.expense_card, null);
+
+                            TextView nameTextView = expenseCard.findViewById(R.id.expense_name);
+                            TextView priceTextView = expenseCard.findViewById(R.id.expense_price);
+                            TextView expenseTypeTextView = expenseCard.findViewById(R.id.expense_type);
+                            TextView dateTextView = expenseCard.findViewById(R.id.expense_date);
+
+                            nameTextView.setText(name);
+                            priceTextView.setText("-$" + price);
+                            expenseTypeTextView.setText(expenseType);
+
+                            dateTextView.setText(DateConversion.convert(date));
+
+                            budgetContainer.addView(expenseCard);
+
+                            Log.d(TAG, document.getId() + " => " + document.getData());
+                        }
+
+
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                });
     }
 
     @Override
@@ -102,35 +186,45 @@ public class HomeFragment extends Fragment {
                     .inflate(R.layout.fragment_bottom_sheet_expense, null));
             bottomSheetDialog.setCanceledOnTouchOutside(true); // Allow the user to dismiss the bottom sheet by tapping outside it
 
+            EditText expenseTitleText = bottomSheetDialog.findViewById(R.id.expense_name);
+            EditText expenseNameText = bottomSheetDialog.findViewById(R.id.expense_price);
+            String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
 
+            // Declare and initialize the expenseType variable
+            expenseType = ExpenseType.UNKNOWN;
+
+
+            Resources res = getResources();
+            int[] expenseTypeIds = res.getIntArray(R.array.expense_type_ids);
+            String[] expenseTypeNames = res.getStringArray(R.array.expense_type);
+
+            AutoCompleteTextView autoCompleteExpenseType = bottomSheetDialog.findViewById(R.id.expense_type);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, expenseTypeNames);
+            autoCompleteExpenseType.setAdapter(adapter);
+
+            autoCompleteExpenseType.setOnItemClickListener((parent, view, position, id) -> {
+                // Get the selected item's ID
+                // Get the selected expense type ID based on the position
+                Log.d(TAG, "POSITION IS :" + position);
+                int selectedExpenseTypeId = expenseTypeIds[(int) id];
+
+                // Use the selected expense type ID to get the ExpenseType object
+                expenseType = ExpenseType.getExpenseTypeById(selectedExpenseTypeId);
+
+            });
+
+            // Submit button logic
             Button submitButton = bottomSheetDialog.findViewById(R.id.button_submit);
             assert submitButton != null;
             submitButton.setOnClickListener(v -> {
                 // Get credit card information from form
-                EditText expenseTitleText = bottomSheetDialog.findViewById(R.id.expense_name);
-                EditText expenseNameText = bottomSheetDialog.findViewById(R.id.expense_price);
-                AutoCompleteTextView autoCompleteTextView = bottomSheetDialog.findViewById(R.id.expense_type);
-
-
                 assert expenseTitleText != null;
                 String expenseName = expenseTitleText.getText().toString();
                 String expensePrice = expenseNameText.getText().toString();
 
-                String timeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
-
-                autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // Get the selected item's ID
-                        long selectedId = id;
-
-                        expenseType = ExpenseType.getExpenseTypeById(id);
-                        Expense expense = new Expense(expenseName, expenseType, expensePrice, timeStamp);
-                        expense.Save();
-                    }
-                });
-
-
+                // creates and saves an expense
+                exp = new Expense(expenseName, expenseType, expensePrice, timeStamp);
+                exp.Save();
 
                 Toast.makeText(getContext(), "Budget added", Toast.LENGTH_SHORT).show();
                 bottomSheetDialog.dismiss();
@@ -159,7 +253,8 @@ public class HomeFragment extends Fragment {
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
-                    return FirebaseFirestore.getInstance().collection("savings").document(userEmail).get();
+                    return FirebaseFirestore.getInstance().collection("savings")
+                            .document(userEmail).get();
                 })
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
@@ -180,5 +275,32 @@ public class HomeFragment extends Fragment {
                     Log.d(TAG, "onFailure: " + e);
                 });
 
+    }
+
+    public void displayProfileInfo(View view) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        imageView = view.findViewById(R.id.profile_image);
+
+
+        // Create a reference to the user document
+        DocumentReference userRef = db
+                .collection("users")
+                .document(FirebaseAuth.getInstance()
+                        .getCurrentUser()
+                        .getEmail());
+
+        // Call the get() method on the reference to retrieve the document
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    // User document exists in the users collection
+                    ProfileHandler profileHandler = new ProfileHandler(storageReference, imageView);
+                    profileHandler.loadProfileImage(requireContext(), document.getString("profileImageUrl"));
+                }
+            } else {
+                Log.d(TAG, "Failed to retrieve user document from the users collection", task.getException());
+            }
+        });
     }
 }

@@ -14,25 +14,48 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/color_primary"
+        android:background="@drawable/ic_card_bg"
         app:cardCornerRadius="@dimen/card_radius">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="vertical"
-            android:background="@drawable/background_atm_transparent"
+            android:background="@drawable/ic_card_bg"
             android:elevation="0dp"
+            android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/card_type_text"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="Visa"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="left"
+                        android:src="@drawable/ic_chip" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/card_type_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:text="Visa"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/card_type_image"
@@ -92,7 +115,6 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-
 
 
 </LinearLayout>

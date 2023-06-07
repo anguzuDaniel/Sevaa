@@ -2,10 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    class="com.fragment.NavigationDrawerFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.fragments.BottomSheetExpense"
-    class = "com.fragment.NavigationDrawerFragment">
+    tools:context=".UI.fragments.BottomSheetExpense">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:hint="Title"
+                    android:hint="Name"
                     app:boxStrokeColor="@color/color_gray"
                     app:boxStrokeWidth="1dp"
                     app:hintTextColor="@color/color_gray">
@@ -54,25 +54,6 @@
                         android:minHeight="48dp"
                         android:singleLine="true"
                         tools:ignore="SpeakableTextPresentCheck" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:id="@+id/menu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="@string/expense_type">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/expense_type"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:paddingHorizontal="15dp"
-                        android:paddingVertical="15dp"
-                        app:simpleItems="@array/expense_type" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -93,6 +74,24 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         tools:ignore="TextFields,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/menu"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="@string/expense_type">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/expense_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="15dp"
+                        app:simpleItems="@array/expense_type" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
