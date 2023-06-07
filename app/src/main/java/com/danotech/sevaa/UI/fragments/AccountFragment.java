@@ -169,7 +169,7 @@ public class AccountFragment extends Fragment implements ProfileImageHandler.OnP
 
     private void updateProfileImage() {
         if (selectedImageUri != null) {
-            profileImageHandler.uploadProfileImage(selectedImageUri, this);
+            profileImageHandler.uploadFile(requireActivity().getContentResolver(), selectedImageUri, this);
         } else {
             Toast.makeText(getContext(), "Please select an image", Toast.LENGTH_SHORT).show();
         }

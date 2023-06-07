@@ -1,6 +1,8 @@
 package com.danotech.sevaa.Model;
 
+import android.content.ContentResolver;
 import android.net.Uri;
+import android.webkit.MimeTypeMap;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageException;
@@ -67,5 +69,35 @@ public class ProfileImageHandler {
         void onProfileImageUploadSuccess(String imageUrl);
 
         void onProfileImageUploadFailure(String errorMessage);
+    }
+
+    private String getFileExtension(ContentResolver contentResolver, Uri uri) {
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
+
+    private boolean isFileExtensionValid(String extension) {
+        // Define the valid file extensions
+        String[] validExtensions = {"jpg", "jpeg", "png"};
+
+        // Check if the provided extension is valid
+        for (String validExtension : validExtensions) {
+            if (validExtension.equalsIgnoreCase(extension)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void uploadFile(ContentResolver contentResolver, Uri fileUri, final OnProfileImageUploadListener listener) {
+        String fileExtension = getFileExtension(contentResolver, fileUri);
+
+        if (fileExtension != null && isFileExtensionValid(fileExtension)) {
+            // Continue with the upload process
+            uploadProfileImage(fileUri, listener);
+        } else {
+            // Handle invalid file extension
+        }
     }
 }

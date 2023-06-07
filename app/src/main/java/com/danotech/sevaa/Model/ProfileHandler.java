@@ -8,40 +8,23 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.danotech.sevaa.R;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
-import com.bumptech.glide.request.RequestOptions;
 
 public class ProfileHandler {
-    private StorageReference storageReference;
-    private ImageView imageViewProfile;
+    private final StorageReference storageReference;
+    private final ImageView imageViewProfile;
 
     public ProfileHandler(StorageReference storageReference, ImageView imageViewProfile) {
         this.storageReference = storageReference;
         this.imageViewProfile = imageViewProfile;
     }
 
-    public void loadProfileImage(String profileImageUrl, ImageView imageViewProfile) {
-        // Assuming you have a reference to the current user's image in Firebase Storage
-        StorageReference profileImageRef = storageReference.child("images/" + profileImageUrl + ".jpg");
-
-        // Configure the RequestOptions
-        RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.profile_default) // Placeholder image while loading
-                .error(R.drawable.profile_default) // Error image if loading fails
-                .diskCacheStrategy(DiskCacheStrategy.NONE);
-
-        Glide.with(imageViewProfile.getContext())
-                .load(profileImageRef)
-                .apply(requestOptions)
-                .into(imageViewProfile);
-    }
-
     public void loadProfileImage(Context context, String profileImageUrl) {
         // Assuming you have a reference to the current user's image in Firebase Storage
-        StorageReference profileImageRef = storageReference.child("images/" + profileImageUrl + ".jpg");
+        StorageReference profileImageRef = storageReference.child("images/" + profileImageUrl);
 
 
         // Load the image using Glide
