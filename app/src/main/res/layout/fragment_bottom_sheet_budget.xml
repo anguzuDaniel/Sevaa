@@ -31,7 +31,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="Add Budget"
-                    android:textColor="@color/color_primary"
+                    android:textColor="@color/md_theme_light_primary"
                     android:textSize="@dimen/sub_heading_size"
                     android:textStyle="bold" />
 
@@ -77,11 +77,10 @@
                         tools:ignore="TextFields,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button"
                     android:text="Add Budget"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

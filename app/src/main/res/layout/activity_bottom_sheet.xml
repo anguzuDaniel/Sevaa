@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottom_sheet_background"
     tools:context="com.danotech.sevaa.UI.BottomSheetActivity"
     tools:ignore="ExtraText"
     android:id="@+id/bottom_sheet_layout"
@@ -128,11 +127,10 @@
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_button"
                     android:text="@string/save_card"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

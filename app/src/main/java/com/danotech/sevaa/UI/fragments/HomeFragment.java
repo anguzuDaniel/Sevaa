@@ -3,6 +3,7 @@ package com.danotech.sevaa.UI.fragments;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +22,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +37,8 @@ import com.danotech.sevaa.R;
 import com.danotech.sevaa.helpers.DateConversion;
 import com.danotech.sevaa.helpers.ExpenseType;
 import com.danotech.sevaa.helpers.MyRecyclerViewAdapter;
+import com.danotech.sevaa.helpers.ThemeManager;
+import com.danotech.sevaa.helpers.ThemeUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,11 +68,34 @@ public class HomeFragment extends Fragment {
     Expense exp;
     private StorageReference storageReference;
     ImageView imageView;
+    View expenseCard;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
+    LinearLayout background;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // Apply the stored theme mode
+        int themeMode = ThemeManager.getThemeMode(getContext());
+        AppCompatDelegate.setDefaultNightMode(themeMode);
+        background = view.findViewById(R.id.background);
+
+        // Obtain the SharedPreferences instance
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        // Create the preference change listener
+        preferenceChangeListener = (sharedPrefs, key) -> {
+            if (key.equals("theme")) {
+                boolean isDarkModeEnabled = sharedPreferences.getBoolean(key, false);
+                updateBackgroundColors(background, isDarkModeEnabled);
+            }
+        };
+
+        // Register the preference change listener
+        sharedPreferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         user = new User();
         creditCard = new CreditCard();
@@ -76,6 +104,9 @@ public class HomeFragment extends Fragment {
         expense = view.findViewById(R.id.expense);
         userName = view.findViewById(R.id.user_name);
         storageReference = FirebaseStorage.getInstance().getReference();
+        imageView = view.findViewById(R.id.profile_image);
+        expenseCard = inflater.inflate(R.layout.expense_card, null);
+
 
         Context context = getContext();
         ExtendedFloatingActionButton fab = view.findViewById(R.id.extended_fab_expense);
@@ -91,8 +122,6 @@ public class HomeFragment extends Fragment {
         } else {
             userName.setText(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
         }
-
-        displayExpenseCards(view);
 
 
         // Add swipe-to-delete functionality
@@ -114,9 +143,21 @@ public class HomeFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeToDeleteCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        displayProfileInfo(view);
+        displayExpenseCards(view);
+
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void updateBackgroundColors(View view, boolean isDarkModeEnabled) {
+        ThemeUtils.updateBackgroundColor(view, isDarkModeEnabled);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Context context = getActivity().getApplicationContext();
+        displayProfileInfo(context);
     }
 
     public void displayExpenseCards(View view) {
@@ -135,7 +176,6 @@ public class HomeFragment extends Fragment {
                             String date = document.getString("date") != null ? document.getString("date") : "";
                             String expenseType = document.getString("expense_type") != null ? document.getString("expense_type") : "payment";
 
-                            View expenseCard = getLayoutInflater().inflate(R.layout.expense_card, null);
 
                             TextView nameTextView = expenseCard.findViewById(R.id.expense_name);
                             TextView priceTextView = expenseCard.findViewById(R.id.expense_price);
@@ -144,10 +184,17 @@ public class HomeFragment extends Fragment {
 
                             nameTextView.setText(name);
                             priceTextView.setText("-$" + price);
-                            expenseTypeTextView.setText(expenseType);
+
+                            expenseTypeTextView.setText(expenseType.toLowerCase());
 
                             dateTextView.setText(DateConversion.convert(date));
 
+                            // Remove the view from its parent if it already has one
+                            if (expenseCard.getParent() != null) {
+                                ((ViewGroup) expenseCard.getParent()).removeView(expenseCard);
+                            }
+
+                            // Add the expenseCard view to the budgetContainer
                             budgetContainer.addView(expenseCard);
 
                             Log.d(TAG, document.getId() + " => " + document.getData());
@@ -277,10 +324,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void displayProfileInfo(View view) {
+    public void displayProfileInfo(Context context) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        imageView = view.findViewById(R.id.profile_image);
-
 
         // Create a reference to the user document
         DocumentReference userRef = db
@@ -294,9 +339,13 @@ public class HomeFragment extends Fragment {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
+                    userName.setText(document.getString("name"));
                     // User document exists in the users collection
-                    ProfileHandler profileHandler = new ProfileHandler(storageReference, imageView);
-                    profileHandler.loadProfileImage(requireContext(), document.getString("profileImageUrl"));
+
+                    if (imageView != null) {
+                        ProfileHandler profileHandler = new ProfileHandler(storageReference, imageView);
+                        profileHandler.loadProfileImage(context, document.getString("profileImageUrl"));
+                    }
                 }
             } else {
                 Log.d(TAG, "Failed to retrieve user document from the users collection", task.getException());

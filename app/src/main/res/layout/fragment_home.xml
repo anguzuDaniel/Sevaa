@@ -46,7 +46,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/welcome_back"
-                            android:textColor="@color/color_background"
+                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
 
@@ -55,7 +55,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/anguzu_daniel"
-                            android:textColor="@color/color_background" />
+                            android:textSize="18sp"
+                            android:textColor="@color/md_theme_light_surface" />
                     </LinearLayout>
 
                     <!--                    <LinearLayout-->
@@ -74,7 +75,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="4">
 
                         <com.google.android.material.imageview.ShapeableImageView
@@ -99,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/color_primary"
+                    android:backgroundTint="@color/md_theme_light_primary"
                     app:cardCornerRadius="@dimen/card_radius">
 
                     <LinearLayout
@@ -117,7 +118,8 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="Your Balance"
-                            android:textColor="@color/color_background" />
+                            android:textSize="18sp"
+                            android:textColor="@color/md_theme_light_surface" />
 
                         <TextView
                             android:id="@+id/balance"
@@ -126,7 +128,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/color_background"
+                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -163,7 +165,8 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Income"
-                            android:textColor="@color/color_background" />
+                            android:textSize="16sp"
+                            android:textColor="@color/md_theme_light_surface" />
 
                         <TextView
                             android:id="@+id/income"
@@ -172,7 +175,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/color_background"
+                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -200,7 +203,8 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Expenses"
-                            android:textColor="@color/color_background" />
+                            android:textSize="16sp"
+                            android:textColor="@color/md_theme_light_surface" />
 
                         <TextView
                             android:id="@+id/expense"
@@ -209,7 +213,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/color_background"
+                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -217,9 +221,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/right_rounded_corner"
+                android:background="@color/md_theme_light_surfaceVariant"
                 android:elevation="10dp"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_page"
@@ -243,7 +248,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Recent Transactions"
-                            android:textColor="@color/color_primary"
+                            android:textColor="@color/md_theme_light_primary"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -254,7 +259,8 @@
                             android:layout_weight="4"
                             android:gravity="right"
                             android:text="view all"
-                            android:textColor="@color/color_transaction_label"
+                            android:textSize="18sp"
+                            android:textColor="@color/md_theme_light_onSurface"
                             tools:ignore="RtlHardcoded" />
                     </LinearLayout>
                 </LinearLayout>
@@ -265,8 +271,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!--                    <include layout="@layout/expense_card" />-->
-                    <!--                    <include layout="@layout/expense_card" />-->
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -278,14 +282,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="70dp"
-        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="100dp"
         android:contentDescription="Add budget"
+        android:backgroundTint="@color/md_theme_light_primary"
         android:text="Expense"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/md_theme_light_surface"
         app:cornerRadius="0dp"
         app:icon="@drawable/baseline_add_24"
-        app:iconTint="@color/white"
+        app:iconTint="@color/md_theme_light_surface"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

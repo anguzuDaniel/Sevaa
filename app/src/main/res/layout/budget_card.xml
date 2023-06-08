@@ -14,20 +14,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_border"
             android:orientation="vertical">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/budget_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#e1e3df"
                 android:gravity="left"
                 android:text="Food"
                 android:padding="15dp"
-                android:textColor="@color/color_primary"
+                android:background="@color/md_theme_light_surfaceVariant"
                 android:textSize="@dimen/budget_heading"
+                android:textColor="@color/md_theme_light_primary"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -51,14 +50,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Peanut Allergy"
-                        android:textColor="@color/color_transaction_label"
                         android:layout_marginBottom="5dp"/>
 
                     <TextView
                         android:id="@+id/budget_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/color_transaction_label"
                         android:text="December 20" />
 
                 </LinearLayout>

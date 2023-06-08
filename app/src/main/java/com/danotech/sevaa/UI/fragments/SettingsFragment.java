@@ -44,7 +44,7 @@ public class SettingsFragment extends Fragment {
 
 
         accountSettingsAction = view.findViewById(R.id.account_settings_action);
-        cardSettingAction = view.findViewById(R.id.account_card_settings);
+        cardSettingAction = view.findViewById(R.id.account_appearance_action);
         logoutAction = view.findViewById(R.id.account_logout_action);
         emailTextView = view.findViewById(R.id.email);
         usernameTextView = view.findViewById(R.id.user_name);
@@ -66,7 +66,7 @@ public class SettingsFragment extends Fragment {
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.account_card_settings, new AccountFragment())
+                    .replace(R.id.fragment_frame, new AppearanceSettings())
                     .addToBackStack(null)
                     .commit();
         });

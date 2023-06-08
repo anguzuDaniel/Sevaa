@@ -41,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cards"
-                        android:textColor="@color/color_background"
+                        android:textColor="@color/color_background_light"
                         android:textSize="@dimen/page_heading_size"
                         android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/intro"
                         android:text="1 physical, 0 Virtual"
-                        android:textColor="@color/color_background" />
+                        android:textColor="@color/color_background_light" />
 
 
                 </LinearLayout>
@@ -108,7 +108,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="15dp"
                 android:paddingBottom="40dp"
-                android:background="@color/color_background"
+                android:background="@color/md_theme_light_background"
                 android:layout_weight="1">
 
 
@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/page_padding"
                     android:text="Budget"
-                    android:textColor="@color/color_primary"
+                    android:textColor="@color/md_theme_light_primary"
                     android:textSize="@dimen/sub_heading_size"
                     android:textStyle="bold" />
 
@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/color_background"
+                    android:background="@color/md_theme_light_background"
                     android:orientation="vertical"
                     android:padding="@dimen/page_padding">
 
@@ -143,8 +143,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="70dp"
-        android:backgroundTint="@color/color_primary"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/md_theme_light_primary"
         android:contentDescription="Add budget"
         android:text="Budget"
         android:textAllCaps="false"

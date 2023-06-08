@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background_compliment"
+    android:background="@color/md_theme_light_secondaryContainer"
     android:orientation="vertical"
     tools:context=".UI.LoginActivity">
 
@@ -30,8 +30,8 @@
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="15dp"
                 android:text="Login"
-                android:textColor="@color/color_primary"
-                android:textSize="35sp"
+                android:textColor="@color/md_theme_light_primary"
+                android:textSize="@dimen/main_heading_size"
                 android:textStyle="bold" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sign_in_page_title"
                 android:text="Have an account? Sign in to continue"
-                android:textColor="@color/color_heading"
+                android:textColor="@color/md_theme_light_primary"
                 android:textSize="18sp"
                 android:layout_marginBottom="20dp"/>
         </RelativeLayout>
@@ -51,24 +51,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/page_padding"
-        android:background="@color/color_background">
+        android:background="@color/md_theme_light_background">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sign_in_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:textColor="#f44336" />
+            android:layout_marginTop="20dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/input_border"
             android:hint="@string/enter_email"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxStrokeWidth="0dp"
             app:endIconTint="@color/color_primary"
             app:startIconDrawable="@drawable/baseline_email_24">
 
@@ -76,7 +72,6 @@
                 android:id="@+id/sign_in_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
@@ -87,10 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/input_border"
             android:hint="@string/enter_password"
-            app:boxBackgroundColor="@android:color/transparent"
-            app:boxStrokeWidth="0dp"
             app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/baseline_lock_24">
 
@@ -99,7 +91,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/et_email"
-                android:background="@android:color/transparent"
                 android:inputType="textPassword"
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
@@ -113,17 +104,15 @@
             android:layout_marginBottom="20dp"
             android:gravity="end"
             android:text="Sign in to your Account"
-            android:textColor="@color/color_heading"
-            android:textStyle="bold" />
+            android:textColor="@color/md_theme_light_primary" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/rounded_button"
             android:text="Login"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_light_surface"
             tools:ignore="DuplicateSpeakableTextCheck,TextSizeCheck" />
 
         <LinearLayout
@@ -149,9 +138,7 @@
                 android:gravity="left"
                 android:layout_marginLeft="5dp"
                 android:text="@string/sign_up"
-                android:textColor="@color/color_primary"
-                android:textSize="18sp"
-                android:textStyle="bold|normal"
+                android:textColor="@color/md_theme_light_primary"
                 tools:ignore="RtlHardcoded,TextSizeCheck" />
         </LinearLayout>
 
@@ -184,7 +171,6 @@
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@android:color/transparent" />
+            android:layout_marginBottom="15dp" />
     </LinearLayout>
 </LinearLayout>

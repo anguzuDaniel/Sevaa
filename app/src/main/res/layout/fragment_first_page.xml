@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.fragments.FirstIntroPageFragment"
     android:orientation="vertical"
-    android:background="@color/color_background">
+    android:background="@color/md_theme_light_surface">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="Your expenses at your finger tips"
-            android:textColor="@color/color_text"
+            android:textColor="@color/md_theme_light_primary"
             android:textSize="@dimen/page_heading_size"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:layout_marginBottom="10dp"
             android:text="@string/first_page_message"
-            android:textColor="@color/color_text"
+            android:textColor="@color/md_theme_light_primary"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -61,7 +61,8 @@
                 android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
                 android:text="Next"
-                android:textColor="@color/color_primary" />
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/md_theme_light_primary" />
 
             <Button
                 android:id="@+id/first_page_skip_button"
@@ -70,7 +71,8 @@
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
                 android:text="Skip"
-                android:textColor="@color/color_primary" />
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/md_theme_light_primary" />
         </LinearLayout>
     </LinearLayout>
 

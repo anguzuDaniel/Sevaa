@@ -23,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.danotech.sevaa.Model.ProfileHandler;
 import com.danotech.sevaa.Model.ProfileImageHandler;
 import com.danotech.sevaa.Model.User;
 import com.danotech.sevaa.R;
@@ -34,6 +35,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -53,6 +56,7 @@ public class AccountFragment extends Fragment implements ProfileImageHandler.OnP
     private Uri selectedImageUri;
     private ProfileImageHandler profileImageHandler;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
+    private StorageReference storageReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +70,8 @@ public class AccountFragment extends Fragment implements ProfileImageHandler.OnP
         username = view.findViewById(R.id.profile_username);
         updateProfileButton = view.findViewById(R.id.update_profile_button);
         updateProfileImageBtn = view.findViewById(R.id.edit_profile_image_btn);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         profileImageView = view.findViewById(R.id.profile_image);
         profileImageHandler = new ProfileImageHandler();
@@ -286,6 +292,11 @@ public class AccountFragment extends Fragment implements ProfileImageHandler.OnP
                     // User document exists in the users collection
                     name.setText(document.getString("name"));
                     username.setText(document.getString("username"));
+
+                    // User document exists in the users collection
+                    ProfileHandler profileHandler = new ProfileHandler(storageReference, profileImageView);
+                    profileHandler.loadProfileImage(requireContext(), document.getString("profileImageUrl"));
+
                 } else {
                     // User document does not exist in the users collection
                     name.setHint("First name");

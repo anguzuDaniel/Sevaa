@@ -14,4 +14,6 @@
     <dimen name="padding_page">18dp</dimen>
     <dimen name="budget_heading">18sp</dimen>
     <dimen name="budget_text">15sp</dimen>
+    <dimen name="text_size">18sp</dimen>
+    <dimen name="main_heading_size">40sp</dimen>
 </resources>
