@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_secondaryContainer"
+    style="@style/AppTheme.linearlayout.background.color"
     android:orientation="vertical"
     tools:context=".UI.LoginActivity">
 
@@ -12,35 +12,34 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-20dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="16dp"
+
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/page_padding">
+            style="@style/AppTheme.background.top"
+            android:paddingHorizontal="@dimen/page_padding"
+            android:paddingVertical="30dp"
+            android:elevation="5dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/sign_in_page_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="15dp"
                 android:text="Login"
-                android:textColor="@color/md_theme_light_primary"
                 android:textSize="@dimen/main_heading_size"
                 android:textStyle="bold" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/welcome_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sign_in_page_title"
                 android:text="Have an account? Sign in to continue"
-                android:textColor="@color/md_theme_light_primary"
                 android:textSize="18sp"
                 android:layout_marginBottom="20dp"/>
         </RelativeLayout>
@@ -51,7 +50,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/page_padding"
-        android:background="@color/md_theme_light_background">
+        style="@style/AppTheme.linearlayout.background.color">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/sign_in_message"
@@ -96,7 +95,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sign_in_page_title"
@@ -129,12 +128,11 @@
                 android:gravity="right"
                 android:text="Don't have an account?" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/signup_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
                 android:gravity="left"
                 android:layout_marginLeft="5dp"
                 android:text="@string/sign_up"

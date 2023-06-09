@@ -33,23 +33,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Apply the stored theme mode
-        int themeMode = ThemeManager.getThemeMode(this);
-        AppCompatDelegate.setDefaultNightMode(themeMode);
-
-        // Obtain the SharedPreferences instance
+//        // Apply the stored theme mode
+//        int themeMode = ThemeManager.getThemeMode(this);
+//        AppCompatDelegate.setDefaultNightMode(themeMode);
+//
+//        // Obtain the SharedPreferences instance
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        // Create the preference change listener
-        preferenceChangeListener = (sharedPrefs, key) -> {
-            if (key.equals("theme")) {
-                boolean isDarkModeEnabled = sharedPreferences.getBoolean(key, false);
-                updateBackgroundColors(isDarkModeEnabled);
-            }
-        };
-
-        // Register the preference change listener
-        sharedPreferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+//
+//        // Create the preference change listener
+//        preferenceChangeListener = (sharedPrefs, key) -> {
+//            if (key.equals("theme")) {
+//                boolean isDarkModeEnabled = sharedPreferences.getBoolean(key, false);
+//                updateBackgroundColors(isDarkModeEnabled);
+//            }
+//        };
+//
+//        // Register the preference change listener
+//        sharedPreferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
 
         // navigation bars
         bottomNavigationView = findViewById(R.id.bottom_navigation_view);

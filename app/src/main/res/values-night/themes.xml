@@ -28,4 +28,10 @@
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
     </style>
+    <style name="AppTheme.linearlayout.background.color" parent="AppTheme">
+        <item name="android:background">@color/md_theme_dark_surface</item>
+    </style>
+    <style name="AppTheme.background.top" parent="AppTheme">
+        <item name="android:background">@color/md_theme_dark_secondaryContainer</item>
+    </style>
 </resources>

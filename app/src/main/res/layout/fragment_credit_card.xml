@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_transparent"
+    style="@style/AppTheme.background.top"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CreditCardFragment">
@@ -13,9 +13,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
         android:fillViewport="true"
-        android:isScrollContainer="true">
+        android:isScrollContainer="true"
+        android:scrollbars="none">
 
 
         <LinearLayout
@@ -36,21 +36,19 @@
                     android:padding="@dimen/page_padding">
 
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/intro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cards"
-                        android:textColor="@color/color_background_light"
                         android:textSize="@dimen/page_heading_size"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/intro"
-                        android:text="1 physical, 0 Virtual"
-                        android:textColor="@color/color_background_light" />
+                        android:text="1 physical, 0 Virtual" />
 
 
                 </LinearLayout>
@@ -103,21 +101,20 @@
             </RelativeLayout>
 
             <LinearLayout
+                style="@style/AppTheme.linearlayout.background.color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginTop="15dp"
-                android:paddingBottom="40dp"
-                android:background="@color/md_theme_light_background"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
 
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/page_padding"
                     android:text="Budget"
-                    android:textColor="@color/md_theme_light_primary"
                     android:textSize="@dimen/sub_heading_size"
                     android:textStyle="bold" />
 
@@ -126,7 +123,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/md_theme_light_background"
                     android:orientation="vertical"
                     android:padding="@dimen/page_padding">
 
@@ -137,7 +133,6 @@
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended"
         android:id="@+id/extended_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -149,7 +144,8 @@
         android:text="Budget"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:icon="@drawable/baseline_add_24"
         app:cornerRadius="0dp"
-        app:iconTint="@color/white" />
+        app:icon="@drawable/baseline_add_24"
+        app:iconTint="@color/white"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

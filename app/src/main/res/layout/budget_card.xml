@@ -24,9 +24,8 @@
                 android:gravity="left"
                 android:text="Food"
                 android:padding="15dp"
-                android:background="@color/md_theme_light_surfaceVariant"
+                style="@style/AppTheme.background.top"
                 android:textSize="@dimen/budget_heading"
-                android:textColor="@color/md_theme_light_primary"
                 android:textStyle="bold" />
 
             <LinearLayout

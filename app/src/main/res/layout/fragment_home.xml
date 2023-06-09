@@ -2,9 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.background.top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_transparent"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context="com.danotech.sevaa.UI.fragments.HomeFragment">
@@ -25,7 +25,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_page">
 
@@ -42,21 +41,19 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/welcome_back"
-                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/page_heading_size"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/user_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/anguzu_daniel"
-                            android:textSize="18sp"
-                            android:textColor="@color/md_theme_light_surface" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <!--                    <LinearLayout-->
@@ -96,43 +93,7 @@
 
                 </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/md_theme_light_primary"
-                    app:cardCornerRadius="@dimen/card_radius">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@drawable/background_atm_transparent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="20dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="Your Balance"
-                            android:textSize="18sp"
-                            android:textColor="@color/md_theme_light_surface" />
-
-                        <TextView
-                            android:id="@+id/balance"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="@string/zero"
-                            android:textColor="@color/md_theme_light_surface"
-                            android:textSize="@dimen/page_heading_size"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                <include layout="@layout/card_balance" />
 
 
                 <LinearLayout
@@ -165,8 +126,7 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Income"
-                            android:textSize="16sp"
-                            android:textColor="@color/md_theme_light_surface" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/income"
@@ -175,7 +135,6 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -203,8 +162,7 @@
                             android:layout_marginBottom="5dp"
                             android:gravity="center"
                             android:text="Expenses"
-                            android:textSize="16sp"
-                            android:textColor="@color/md_theme_light_surface" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/expense"
@@ -213,7 +171,6 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="@string/zero"
-                            android:textColor="@color/md_theme_light_surface"
                             android:textSize="@dimen/num_expense"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -222,9 +179,9 @@
 
             <LinearLayout
                 android:id="@+id/background"
+                style="@style/AppTheme.linearlayout.background.color"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/md_theme_light_surfaceVariant"
                 android:elevation="10dp"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_page"
@@ -243,16 +200,15 @@
                         android:orientation="horizontal"
                         android:weightSum="5">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Recent Transactions"
-                            android:textColor="@color/md_theme_light_primary"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -260,7 +216,6 @@
                             android:gravity="right"
                             android:text="view all"
                             android:textSize="18sp"
-                            android:textColor="@color/md_theme_light_onSurface"
                             tools:ignore="RtlHardcoded" />
                     </LinearLayout>
                 </LinearLayout>
@@ -283,8 +238,8 @@
         android:layout_gravity="bottom|right"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="100dp"
-        android:contentDescription="Add budget"
         android:backgroundTint="@color/md_theme_light_primary"
+        android:contentDescription="Add budget"
         android:text="Expense"
         android:textAllCaps="false"
         android:textColor="@color/md_theme_light_surface"

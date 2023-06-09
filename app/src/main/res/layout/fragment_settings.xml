@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_transparent"
+    style="@style/AppTheme.background.top"
     android:orientation="vertical"
     tools:context="com.danotech.sevaa.UI.fragments.CardSettingsActivity">
 
@@ -53,31 +53,29 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/color_background_light"
-                    android:textSize="20sp" />
+                    android:text="email"
+                    android:textSize="@dimen/text_size" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text=""
-                    android:textColor="@color/color_background_light"
-                    android:textSize="20sp" />
+                    android:text="name"
+                    android:textSize="@dimen/text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/md_theme_light_surfaceVariant"
+                style="@style/AppTheme.linearlayout.background.color"
                 android:orientation="vertical"
                 android:padding="@dimen/padding_page">
 
@@ -90,11 +88,10 @@
                     android:orientation="horizontal"
                     android:paddingVertical="@dimen/padding_settings">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/profile_information"
-                        android:textColor="@color/color_primary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -162,11 +159,10 @@
                     android:paddingVertical="@dimen/padding_settings"
                     android:paddingTop="16dp">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/appearance"
-                        android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -198,11 +194,10 @@
                     android:paddingVertical="@dimen/padding_settings"
                     android:paddingTop="16dp">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/about"
-                        android:textColor="@color/color_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -234,11 +229,11 @@
                     android:paddingVertical="@dimen/padding_settings"
                     android:paddingTop="16dp">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/logout"
-                        android:textColor="@color/color_error"
+                        android:textColor="@color/md_theme_light_error"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -254,12 +249,12 @@
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
-                    android:text="Version 1.0"
-                    android:textColor="#00796B" />
+                    android:text="@string/version_1_0"
+                    android:textColor="@color/md_theme_light_primary" />
             </LinearLayout>
         </LinearLayout>
 

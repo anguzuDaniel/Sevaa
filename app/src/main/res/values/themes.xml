@@ -104,8 +104,13 @@
         <item name="bottomSheetStyle">@style/ModalBottomSheet</item>
     </style>
 
-    <!--    <style name="AppTheme" parent="Theme.MaterialComponents.BottomSheetDialog">-->
-    <!--    </style>-->
+    <style name="AppTheme.linearlayout.background.color" parent="AppTheme">
+        <item name="android:background">@color/md_theme_light_surface</item>
+    </style>
+
+    <style name="AppTheme.background.top" parent="AppTheme">
+        <item name="android:background">@color/md_theme_light_secondaryContainer</item>
+    </style>
 
     <style name="ShapeAppearanceOverlayExtended" parent="">
         <item name="cornerFamily">rounded</item>
