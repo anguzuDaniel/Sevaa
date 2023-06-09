@@ -44,13 +44,13 @@ import java.util.Map;
 public class CreditCardFragment extends Fragment {
     private BottomSheetDialog bottomSheetDialog;
     private CreditCard creditCard;
+    View cardView;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_credit_card, container, false);
-
 
         Context context = getContext();
 
@@ -171,12 +171,29 @@ public class CreditCardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        displayBudgetInformation(view);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayBudgetInformation(getView());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        bottomSheetDialog = null;
     }
 
     public void displayUserProfileInfo(View view) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
         String userEmail = currentUser.getEmail();
+
+        // Assuming you have a LinearLayout with id "cardContainer" in your XML layout
+        // container that will displays the cards
+        LinearLayout cardContainer = view.findViewById(R.id.cardContainer);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -190,11 +207,6 @@ public class CreditCardFragment extends Fragment {
                     if (documentSnapshot.exists()) {
                         Map<String, Object> cardsMap = (Map<String, Object>) documentSnapshot.get("cards");
                         if (cardsMap != null) {
-                            // Assuming you have a LinearLayout with id "cardContainer" in your XML layout
-                            // container that will displays the cards
-                            LinearLayout cardContainer = view.findViewById(R.id.cardContainer);
-
-
                             for (Map.Entry<String, Object> entry : cardsMap.entrySet()) {
                                 String cardKey = entry.getKey();
                                 Map<String, Object> cardDetails = (Map<String, Object>) entry.getValue();
@@ -215,6 +227,7 @@ public class CreditCardFragment extends Fragment {
                                 TextView cardName = cardView.findViewById(R.id.card_holder_text);
                                 TextView cardType = cardView.findViewById(R.id.card_type_text);
 
+
                                 // Set the card details
                                 cardName.setText(name);
                                 cardNum.setText(number);
@@ -228,8 +241,9 @@ public class CreditCardFragment extends Fragment {
                             }
 
                         } else {
-                            // Handle case when the 'cards' field is null or not found
-                            System.out.println("No cards found in the document.");
+                            TextView textView = view.findViewById(R.id.no_card_added_message);
+                            textView.setText("No cards added yet");
+                            cardContainer.addView(textView);
                         }
                     }
                 }).addOnFailureListener(e -> {

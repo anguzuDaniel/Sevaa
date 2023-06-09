@@ -67,6 +67,8 @@
     <string name="un_known">unknown</string>
     <string name="version_1_0">Version 1.0</string>
     <string name="your_balance">Your Balance</string>
+    <string name="name">Name</string>
+    <string name="user_name">User Name</string>
 
     <integer-array name="expense_type_ids">
         <item>0</item> <!-- Subscription ID -->
