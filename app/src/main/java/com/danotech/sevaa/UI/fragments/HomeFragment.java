@@ -39,6 +39,7 @@ import com.danotech.sevaa.helpers.ExpenseType;
 import com.danotech.sevaa.helpers.MyRecyclerViewAdapter;
 import com.danotech.sevaa.helpers.ThemeManager;
 import com.danotech.sevaa.helpers.ThemeUtils;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,7 +53,9 @@ import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -105,7 +108,6 @@ public class HomeFragment extends Fragment {
         userName = view.findViewById(R.id.user_name);
         storageReference = FirebaseStorage.getInstance().getReference();
         imageView = view.findViewById(R.id.profile_image);
-        expenseCard = inflater.inflate(R.layout.expense_card, null);
 
 
         Context context = getContext();
@@ -160,6 +162,18 @@ public class HomeFragment extends Fragment {
         displayProfileInfo(context);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayExpenseCards(getView());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        bottomSheetDialog = null;
+    }
+
     public void displayExpenseCards(View view) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -176,6 +190,7 @@ public class HomeFragment extends Fragment {
                             String date = document.getString("date") != null ? document.getString("date") : "";
                             String expenseType = document.getString("expense_type") != null ? document.getString("expense_type") : "payment";
 
+                            expenseCard = getLayoutInflater().inflate(R.layout.expense_card, null);
 
                             TextView nameTextView = expenseCard.findViewById(R.id.expense_name);
                             TextView priceTextView = expenseCard.findViewById(R.id.expense_price);
@@ -183,16 +198,12 @@ public class HomeFragment extends Fragment {
                             TextView dateTextView = expenseCard.findViewById(R.id.expense_date);
 
                             nameTextView.setText(name);
-                            priceTextView.setText("-$" + price);
+
+                            priceTextView.setText(Currency.getInstance(Locale.getDefault()).toString() + "" + price);
 
                             expenseTypeTextView.setText(expenseType.toLowerCase());
 
                             dateTextView.setText(DateConversion.convert(date));
-
-                            // Remove the view from its parent if it already has one
-                            if (expenseCard.getParent() != null) {
-                                ((ViewGroup) expenseCard.getParent()).removeView(expenseCard);
-                            }
 
                             // Add the expenseCard view to the budgetContainer
                             budgetContainer.addView(expenseCard);
@@ -287,6 +298,8 @@ public class HomeFragment extends Fragment {
         FirebaseUser currentUser = auth.getCurrentUser();
         String userEmail = currentUser.getEmail();
 
+        String currency = Currency.getInstance(Locale.getDefault()).getCurrencyCode();
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("savings")
@@ -308,17 +321,17 @@ public class HomeFragment extends Fragment {
                         savings = documentSnapshot.toObject(Savings.class);
                         creditCard = documentSnapshot.toObject(CreditCard.class);
 
-                        balance.setText("$" + savings.getBalance());
-                        income.setText("$" + savings.getIncome());
-                        expense.setText("$" + savings.getExpenses());
+                        balance.setText(currency + savings.getBalance());
+                        income.setText(currency + savings.getIncome());
+                        expense.setText(currency + savings.getExpenses());
 
                         System.out.println(creditCard);
                     }
                 })
                 .addOnFailureListener(e -> {
-                    balance.setText("$" + 0.0);
-                    income.setText("$" + 0.0);
-                    expense.setText("$" + 0.0);
+                    balance.setText(currency + 0.0);
+                    income.setText(currency + 0.0);
+                    expense.setText(currency + 0.0);
                     Log.d(TAG, "onFailure: " + e);
                 });
 

@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
@@ -14,6 +15,11 @@ import androidx.preference.SwitchPreferenceCompat;
 import com.danotech.sevaa.R;
 import com.danotech.sevaa.helpers.ThemeManager;
 import com.danotech.sevaa.helpers.ThemeUtils;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Set;
 
 public class AppearanceSettings extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
 
@@ -23,6 +29,9 @@ public class AppearanceSettings extends PreferenceFragmentCompat implements Pref
 
         SwitchPreferenceCompat switchPreference = findPreference("theme");
         switchPreference.setOnPreferenceChangeListener(this);
+
+        ListPreference preferenceCurrencyList = findPreference("currency");
+        preferenceCurrencyList.setOnPreferenceChangeListener(this::onPreferenceChange);
 
 
         switchPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -34,6 +43,25 @@ public class AppearanceSettings extends PreferenceFragmentCompat implements Pref
             }
         });
 
+
+        Set<Currency> currencies = Currency.getAvailableCurrencies();
+
+        int currencySize = currencies.size();
+
+        CharSequence[] entries = new CharSequence[currencySize];
+        CharSequence[] entryValues = new CharSequence[currencySize];
+
+        int i = 0;
+        for (Currency currency : currencies) {
+            entries[i] = currency.getDisplayName();
+            entryValues[i] = currency.getCurrencyCode();
+            i++;
+        }
+
+        preferenceCurrencyList.setEntries(entries);
+        preferenceCurrencyList.setEntryValues(entryValues);
+
+        preferenceCurrencyList.setDefaultValue("$");
     }
 
     @Override

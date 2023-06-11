@@ -1,15 +1,36 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory app:title="Settings"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        style="@style/PreferenceCategoryStyle"
         app:iconSpaceReserved="false"
-        style="@style/PreferenceCategoryStyle">
+        app:title="Settings">
 
         <SwitchPreferenceCompat
             android:id="@+id/switch_theme_preference"
-            app:iconSpaceReserved="false"
             android:defaultValue="false"
+            app:iconSpaceReserved="false"
             app:key="theme"
             app:title="Dark Mode" />
 
+
     </PreferenceCategory>
+
+
+
+    <PreferenceCategory
+        style="@style/PreferenceCategoryStyle"
+        android:title="Accounts"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:iconSpaceReserved="false"
+            android:defaultValue="$"
+            android:key="currency"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="Currency" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

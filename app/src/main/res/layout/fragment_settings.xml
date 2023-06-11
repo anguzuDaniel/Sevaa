@@ -53,21 +53,13 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text=""
-                    android:textSize="@dimen/text_size" />
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:text="@string/version"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_theme_light_primary" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:text=""
-                    android:textSize="@dimen/text_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -247,13 +239,6 @@
                         android:contentDescription="@string/arrow"
                         android:src="@drawable/baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="16dp"
-                    android:text="@string/version_1_0"
-                    android:textColor="@color/md_theme_light_primary" />
             </LinearLayout>
         </LinearLayout>
 

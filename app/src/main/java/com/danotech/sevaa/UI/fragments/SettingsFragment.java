@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.danotech.sevaa.Model.ProfileHandler;
@@ -32,7 +34,6 @@ public class SettingsFragment extends Fragment {
     LinearLayout accountSettingsAction, logoutAction, cardSettingAction;
     ImageView imageView;
     private StorageReference storageReference;
-    TextView emailTextView, usernameTextView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +47,6 @@ public class SettingsFragment extends Fragment {
         accountSettingsAction = view.findViewById(R.id.account_settings_action);
         cardSettingAction = view.findViewById(R.id.account_appearance_action);
         logoutAction = view.findViewById(R.id.account_logout_action);
-        emailTextView = view.findViewById(R.id.email);
-        usernameTextView = view.findViewById(R.id.user_name);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -84,6 +83,18 @@ public class SettingsFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        displayProfileInfo(view);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayProfileInfo(getView());
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
     }
@@ -109,8 +120,6 @@ public class SettingsFragment extends Fragment {
                     ProfileHandler profileHandler = new ProfileHandler(storageReference, imageView);
                     profileHandler.loadProfileImage(requireContext(), document.getString("profileImageUrl"));
 
-                    usernameTextView.setText(document.get("name").toString());
-                    emailTextView.setText(document.get("email").toString());
                 }
             } else {
                 Log.d(TAG, "Failed to retrieve user document from the users collection", task.getException());
