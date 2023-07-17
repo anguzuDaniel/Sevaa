@@ -74,6 +74,6 @@ The Sevaa expense tracker application is licensed under the [MIT License](LICENS
 If you have any questions, suggestions, or feedback, feel free to contact the project maintainers:
 
 - Email: anguzud7@gmail.com
-- GitHub: [your-username](https://github.com/your-username)
+- GitHub: [Anguzu Daniel](https://github.com/your-username)
 
 Thank you for using Sevaa! We hope it helps you manage your expenses effectively.
